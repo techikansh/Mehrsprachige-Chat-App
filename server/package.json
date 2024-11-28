@@ -1,0 +1,16 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "API für Chat-app",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "author": "Devansh Kumar",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^6.11.0",
+    "nodemon": "^3.1.7"
+  }
+}
