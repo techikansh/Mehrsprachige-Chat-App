@@ -1,13 +1,49 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { BASE_URL } from '../utils/constants'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '../store/store'
+import { setUser } from '../store/userSlice'
 
 const Login = () => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [email, setEmail] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle login logic
+    console.log(email, password);
+    setError(null)
+    setLoading(true);
+
+    const url = BASE_URL + "auth/login" ;
+    console.log(url);
+    const res = await fetch (url, {
+      method: "POST",
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password
+      })
+    })
+    const data = await res.json();
+    console.log(data);
+    if (data.success)  {
+      setLoading(false);
+      dispatch(setUser({...data.user, token: data.token}));
+      navigate("/");
+    }
+    else {
+      setError(data.message);
+      setLoading(false);
+    }
   }
 
   return (
@@ -56,6 +92,10 @@ const Login = () => {
                 placeholder="Bitte geben Sie Ihr Passwort ein"
               />
             </div>
+          </div>
+
+          <div>
+            {error && <p className="text-red-500 text-sm">{error}</p>}
           </div>
 
           <div>

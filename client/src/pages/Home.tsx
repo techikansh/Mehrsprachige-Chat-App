@@ -1,24 +1,23 @@
+import { useState } from "react";
 import ChatList from "../components/ChatList";
 import Header from "../components/Header";
+import ChatWindow from "../components/ChatWindow";
 
 const Home = () => {
-    return (
-        <>
-            <Header />
-
-            <div className="h-screen flex">
-                {/* <div id="1" className="w-20 2xl:w-28 border p-2">
-                    1
-                </div> */}
-                <div id="2" className="w-[36rem] 2xl:w-[40rem] border bg-gray-100">
-                    <ChatList />
-                </div>
-                <div id="3" className="w-full p-2">
-                    3
-                </div>
-            </div>
-        </>
-    );
+  const [selectedContact, setSelectedContact] = useState<any>(null);
+  return (
+    <div className="h-screen flex flex-col">
+      <Header />
+      <div className="flex-1 flex overflow-hidden">
+        <div className="w-[28rem] 2xl:w-[32rem] border bg-gray-100">
+          <ChatList setSelectedContact={setSelectedContact} />
+        </div>
+        <div className="flex-1">
+          <ChatWindow contact={selectedContact} />
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Home;

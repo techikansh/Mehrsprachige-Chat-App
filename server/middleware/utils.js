@@ -13,7 +13,7 @@ export const authenticateToken = async (req, res, next) => {
         }
 
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        req.user = decoded;
+        req.user = decoded; //userID, email
         next();
     } catch (error) {
         return res.status(401).json({

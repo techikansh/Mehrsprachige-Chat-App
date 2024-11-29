@@ -50,8 +50,8 @@ export async function login(req, res) {
             });
         }
 
-        // Find user
-        const user = await User.findOne({ email });
+        // Find user and populate contacts
+        const user = await User.findOne({ email }).populate('contacts', '-password');
         if (!user) {
             return res.status(401).json({
                 success: false,
@@ -73,15 +73,12 @@ export async function login(req, res) {
             { expiresIn: "24h" }
         );
 
+        const { password: pass, ...userWithoutPassword } = user.toObject();
+
         return res.status(200).json({
             success: true,
             token,
-            user: {
-                id: user._id,
-                email: user.email,
-                firstName: user.firstName,
-                lastName: user.lastName,
-            },
+            user: userWithoutPassword
         });
     } catch (error) {
         console.error("Login error:", error);
