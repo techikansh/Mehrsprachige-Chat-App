@@ -30,10 +30,9 @@ app.use(express.urlencoded({ extended: true }));
 
 
 
-// Auth routes
+// API routes
 app.use("/api/auth", authRoute);
 app.use("/api/user", userRoute);
-// Chat routes
 app.use("/api/chat", chatRoute);
 
 
