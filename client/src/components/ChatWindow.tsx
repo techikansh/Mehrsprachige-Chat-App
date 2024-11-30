@@ -53,7 +53,9 @@ const ChatWindow = ({ contact }: ChatWindowProps) => {
         setError(data.message);
       }
     } catch (err) {
-      setError(err instanceof Error ? err : new Error('Failed to send message'));
+      setError(
+        err instanceof Error ? err : new Error("Failed to send message")
+      );
     }
     setMessage("");
   };
@@ -75,13 +77,13 @@ const ChatWindow = ({ contact }: ChatWindowProps) => {
       const data = await res.json();
       if (data.success) {
         setChatId(data.chat._id);
-        console.log(data.chat._id)
+        console.log(data.chat._id);
         fetchMessages(data.chat._id);
       } else {
         setError(data.message);
       }
     } catch (err) {
-      setError(err instanceof Error ? err : new Error('Failed to create chat'));
+      setError(err instanceof Error ? err : new Error("Failed to create chat"));
     }
   };
 
@@ -103,8 +105,16 @@ const ChatWindow = ({ contact }: ChatWindowProps) => {
         setError(data.message);
       }
     } catch (err) {
-      setError(err instanceof Error ? err : new Error('Failed to fetch messages'));
+      setError(
+        err instanceof Error ? err : new Error("Failed to fetch messages")
+      );
     }
+  };
+
+  const autoResize = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const textarea = e.target;
+    textarea.style.height = "auto"; // Reset height to auto to calculate new height
+    textarea.style.height = textarea.scrollHeight + "px"; // Set height based on scrollHeight
   };
 
   useEffect(() => {
@@ -138,7 +148,11 @@ const ChatWindow = ({ contact }: ChatWindowProps) => {
 
       {/* Chat Messages */}
       <div className="flex-1 overflow-y-auto p-4 bg-gray-50">
-        {error && <p className="text-red-500 text-sm">{error.message || String(error)}</p>}
+        {error && (
+          <p className="text-red-500 text-sm">
+            {error.message || String(error)}
+          </p>
+        )}
         {/* Messages will go here */}
         {messages.map((msg) => (
           <div
@@ -165,17 +179,22 @@ const ChatWindow = ({ contact }: ChatWindowProps) => {
 
       {/* Message Input */}
       <div className="flex-none border-t bg-white p-4">
-        <form className="flex gap-2" onSubmit={sendMessage}>
-          <input
-            type="text"
+        <form className="flex gap-2 items-center" onSubmit={sendMessage}>
+
+          <textarea
             placeholder="Type a message..."
             value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            className="flex-1 px-4 py-2 rounded-full border border-gray-20 outline-none"
+            onChange={(e) => {
+              setMessage(e.target.value);
+              autoResize(e);
+            }}
+            className="flex-1 px-4 py-2 rounded-md border border-gray-20 outline-none max-h-60 resize-none"
+            rows={1}
           />
+
           <button
             type="submit"
-            className="bg-black text-white px-6 py-2 rounded-full hover:scale-105 duration-200 "
+            className="max-h-12 bg-black text-white px-6 py-2 rounded-full hover:scale-105 duration-200 "
           >
             <BsSendFill />
           </button>
