@@ -1,13 +1,13 @@
-import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { BASE_URL } from '../utils/constants'
-import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from '../store/store'
-import { setUser } from '../store/userSlice'
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { BASE_URL } from "../utils/constants";
+import { useDispatch } from "react-redux";
+
+import { setUser } from "../store/userSlice";
 
 const Login = () => {
-  const [email, setEmail] = useState<string>('')
-  const [password, setPassword] = useState<string>('')
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean | null>(null);
 
@@ -15,43 +15,44 @@ const Login = () => {
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     console.log(email, password);
-    setError(null)
+    setError(null);
     setLoading(true);
 
-    const url = BASE_URL + "auth/login" ;
+    const url = BASE_URL + "auth/login";
     console.log(url);
-    const res = await fetch (url, {
+    const res = await fetch(url, {
       method: "POST",
-      credentials: 'include',
+      credentials: "include",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         email: email,
-        password: password
-      })
-    })
+        password: password,
+      }),
+    });
     const data = await res.json();
     console.log(data);
-    if (data.success)  {
+    if (data.success) {
       setLoading(false);
-      dispatch(setUser({...data.user, token: data.token}));
+      dispatch(setUser({ ...data.user, token: data.token }));
       navigate("/");
-    }
-    else {
+    } else {
       setError(data.message);
       setLoading(false);
     }
-  }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 flex items-center justify-center p-4">
       <div className="max-w-md w-full space-y-8 bg-white p-8 rounded-xl shadow-lg">
         {/* Header */}
         <div className="text-center">
-          <h2 className="mt-6 text-3xl font-bold text-gray-900">Willkommen zurück!</h2>
+          <h2 className="mt-6 text-3xl font-bold text-gray-900">
+            Willkommen zurück!
+          </h2>
           <p className="mt-2 text-sm text-gray-600">
             Bitte melden Sie sich an, um fortzufahren.
           </p>
@@ -61,7 +62,10 @@ const Login = () => {
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           <div className="space-y-4">
             <div>
-              <label htmlFor="email" className="text-sm font-medium text-gray-700">
+              <label
+                htmlFor="email"
+                className="text-sm font-medium text-gray-700"
+              >
                 Email Adresse
               </label>
               <input
@@ -77,7 +81,10 @@ const Login = () => {
             </div>
 
             <div>
-              <label htmlFor="password" className="text-sm font-medium text-gray-700">
+              <label
+                htmlFor="password"
+                className="text-sm font-medium text-gray-700"
+              >
                 Passwort
               </label>
               <input
@@ -94,9 +101,7 @@ const Login = () => {
             </div>
           </div>
 
-          <div>
-            {error && <p className="text-red-500 text-sm">{error}</p>}
-          </div>
+          <div>{error && <p className="text-red-500 text-sm">{error}</p>}</div>
 
           <div>
             <button
@@ -108,9 +113,11 @@ const Login = () => {
           </div>
         </form>
 
-        <div className='flex justify-between text-sm'>
-            <span>Noch nicht registriert? </span>
-            <Link to="/signup" className="text-blue-600 hover:underline">Registrieren</Link>
+        <div className="flex justify-between text-sm">
+          <span>Noch nicht registriert? </span>
+          <Link to="/signup" className="text-blue-600 hover:underline">
+            Registrieren
+          </Link>
         </div>
 
         {/* Social Login */}
@@ -144,7 +151,7 @@ const Login = () => {
         </div> */}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;

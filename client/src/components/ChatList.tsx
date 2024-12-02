@@ -4,10 +4,10 @@ import { BASE_URL } from "../utils/constants";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../store/userSlice";
 import { RootState } from "../store/store";
-
+import { fetchUser } from "../utils/helper";
 
 interface ChatListProps {
-    setSelectedContact: React.Dispatch<React.SetStateAction<any>>;
+  setSelectedContact: React.Dispatch<React.SetStateAction<any>>;
 }
 
 const ChatList: React.FC<ChatListProps> = ({ setSelectedContact }) => {
@@ -16,7 +16,7 @@ const ChatList: React.FC<ChatListProps> = ({ setSelectedContact }) => {
   const [fetchedUsers, setFetchedUsers] = useState<any[]>([]);
   const [error, setError] = useState<string | null>(null);
   const dispatch = useDispatch();
-  //   const [allContacts, setAllContacts] = useState<any[]>([]);
+  const [allContacts, setAllContacts] = useState<any[]>([]);
 
   const {
     firstName,
@@ -33,7 +33,6 @@ const ChatList: React.FC<ChatListProps> = ({ setSelectedContact }) => {
     if (contacts.includes(user._id)) {
       console.log("User is already in contacts");
       setInput("");
-
       return;
     }
     const url = BASE_URL + "user/updateUser";
@@ -84,10 +83,32 @@ const ChatList: React.FC<ChatListProps> = ({ setSelectedContact }) => {
     }
   };
 
+  const fetchContactsList = async () => {
+    const url = BASE_URL + "user/fetchContacts";
+    const res = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: "Bearer " + token,
+      },
+    });
+    const data = await res.json();
+    if (data.success) {
+      console.log("contacts: ", data.contacts);
+      setAllContacts(data.contacts);
+    } else {
+      setError(data.message);
+    }
+  };
+
   useEffect(() => {
     if (input.length >= 3) fetchUsers();
     else setFetchedUsers([]);
   }, [input]);
+
+  useEffect(() => {
+    fetchContactsList();
+  }, []);
 
   return (
     <div className="h-full flex flex-col">
@@ -98,10 +119,7 @@ const ChatList: React.FC<ChatListProps> = ({ setSelectedContact }) => {
 
           {/* Search Section */}
           <div className="relative w-72">
-            <form 
-              className="relative"
-              onSubmit={(e) => e.preventDefault()}
-            >
+            <form className="relative" onSubmit={(e) => e.preventDefault()}>
               <input
                 type="text"
                 className="w-full px-4 py-2 rounded-full border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none"
@@ -139,7 +157,9 @@ const ChatList: React.FC<ChatListProps> = ({ setSelectedContact }) => {
                         <span className="font-medium text-gray-900">
                           {fetchedUser.firstName} {fetchedUser.lastName}
                         </span>
-                        <span className="text-sm text-gray-500">{fetchedUser.status}</span>
+                        <span className="text-sm text-gray-500">
+                          {fetchedUser.status}
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -162,35 +182,40 @@ const ChatList: React.FC<ChatListProps> = ({ setSelectedContact }) => {
       {/* Contacts List */}
       <div className="flex-1 overflow-y-auto px-4 py-4">
         <div className="bg-white rounded-xl shadow-sm">
-          {contacts && contacts.map((contact) => (
-            <div 
-              key={contact._id}
-              className="p-4 hover:bg-gray-50 cursor-pointer transition-colors border-b last:border-b-0"
-              onClick={() => setSelectedContact(contact)}
-            >
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-4">
-                  <div className="relative">
-                    <img
-                      src={contact.avatar}
-                      alt={`${contact.firstName}'s avatar`}
-                      className="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm"
-                    />
-                    {/* Online status indicator */}
-                    <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-white"></div>
+          {allContacts.length > 0 &&
+            allContacts.map((contact) => (
+              <div
+                key={contact._id}
+                className="p-4 hover:bg-gray-50 cursor-pointer transition-colors border-b last:border-b-0"
+                onClick={() => setSelectedContact(contact)}
+              >
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-4">
+                    <div className="relative">
+                      <img
+                        src={contact.avatar}
+                        alt={`${contact.firstName}'s avatar`}
+                        className="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm"
+                      />
+                      {/* Online status indicator */}
+                      {contact.status == "online" && (
+                        <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-white"></div>
+                      )}
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="font-medium text-gray-900">
+                        {contact.firstName} {contact.lastName}
+                      </span>
+                      <span className="text-sm text-gray-500">
+                        {contact.status}
+                      </span>
+                    </div>
                   </div>
-                  <div className="flex flex-col">
-                    <span className="font-medium text-gray-900">
-                      {contact.firstName} {contact.lastName}
-                    </span>
-                    <span className="text-sm text-gray-500">{contact.status}</span>
-                  </div>
+                  {/* Last message time - You'll need to add this data */}
+                  <span className="text-xs text-gray-400">2m ago</span>
                 </div>
-                {/* Last message time - You'll need to add this data */}
-                <span className="text-xs text-gray-400">2m ago</span>
               </div>
-            </div>
-          ))}
+            ))}
         </div>
       </div>
     </div>

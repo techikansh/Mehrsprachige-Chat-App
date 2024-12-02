@@ -13,7 +13,7 @@ import { logout } from "../store/userSlice";
 // 2xl: 1536px (min-width: 1536px)
 
 const Header = () => {
-  const { isAuthenticated } = useSelector((state: RootState) => state.user);
+  const { isAuthenticated, firstName, lastName } = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -37,7 +37,7 @@ const Header = () => {
 
       <div className="flex gap-3 items-center">
         {isAuthenticated && (
-          <div className="bg-gray-800 text-white p-2 py rounded-full">DK</div>
+          <div className="bg-gray-800 text-white p-2 py rounded-full">{firstName?.charAt(0)}{lastName?.charAt(0)}</div>
         )}
 
         {isAuthenticated ? (

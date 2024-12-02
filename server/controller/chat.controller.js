@@ -14,7 +14,6 @@ export async function findUsers(req, res) {
     });
 
     if (users.length > 0) {
-      
       const usersWithoutPasswords = users.map((user) => {
         const { password, ...userWithoutPassword } = user.toObject();
         return userWithoutPassword;
@@ -39,95 +38,100 @@ export async function findUsers(req, res) {
   }
 }
 
-
 export async function createOrGetChat(req, res) {
-    const { userId } = req.user;
-    const { receiverId } = req.body;
+  const { userId } = req.user;
+  const { receiverId } = req.body;
 
-    try {
-        let chat = await Chat.findOne({
-            chatType: 'direct',
-            participants: { $all: [userId, receiverId]}
-        })
-        if (!chat) {
-            chat = await Chat.create({
-                chatType: 'direct',
-                participants: [userId, receiverId]
-            })
-        }
-        return res.status(201).json({
-            success:true,
-            chat
-        })
-    } catch (error) {
-        console.log(error);
-        return res.status(500).json({
-            success: false,
-            message: "Internal server error"
-        })
+  try {
+    let chat = await Chat.findOne({
+      chatType: "direct",
+      participants: { $all: [userId, receiverId] },
+    });
+    if (!chat) {
+      chat = await Chat.create({
+        chatType: "direct",
+        participants: [userId, receiverId],
+      });
     }
+    return res.status(201).json({
+      success: true,
+      chat,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      success: false,
+      message: "Internal server error",
+    });
+  }
 }
 
-export async function sendMessage (req, res) {
-    const { userId } = req.user;
-    const { chatId, receiverId, text } = req.body;
+export async function sendMessage(req, res) {
+  const { userId } = req.user;
+  const { chatId, receiverId, text } = req.body;
 
-    try {
-        const chat = await Chat.findById(chatId);
-        if (!chat) {
-            return res.status(404).json({
-                success: false,
-                message: "Chat not found"
-            });
-        }
-
-        const message = await Message.create({
-            sender: userId,
-            receiver: receiverId,
-            chat: chatId,
-            originalContent: {
-                text,
-                language: 'en' // For now hardcoding to English
-            },
-            translatedContent: {
-                text,
-                language: 'en' // For now same as original
-            }
-        });
-        
-        // Update last message in chat
-        await Chat.findByIdAndUpdate(chatId, {lastMessage: message._id});
-
-        return res.status(200).json({
-            success: true,
-            message
-        });
-    } catch (error) {
-        return res.status(500).json({
-            success: false,
-            message: "Internal server error"
-        });
+  try {
+    const chat = await Chat.findById(chatId);
+    if (!chat) {
+      return res.status(404).json({
+        success: false,
+        message: "Chat not found",
+      });
     }
-}
 
+    const message = await Message.create({
+      sender: userId,
+      receiver: receiverId,
+      chat: chatId,
+      originalContent: {
+        text,
+        language: "en", // For now hardcoding to English
+      },
+      translatedContent: {
+        text,
+        language: "en", // For now same as original
+      },
+    });
+
+    // Populate sender information
+    await message.populate("sender", "firstName lastName avatar");
+    console.log(message)
+
+    // Update last message in chat
+    await Chat.findByIdAndUpdate(chatId, { lastMessage: message._id });
+
+    // Emit the new message to all users in the chat
+    req.app.get('io').to(chatId).emit('new_message', message);
+
+
+    return res.status(200).json({
+      success: true,
+      message,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Internal server error",
+    });
+  }
+}
 
 // Get chat messages
 export async function getChatMessages(req, res) {
-    const { chatId } = req.params;
-    try {
-        const messages = await Message.find({ chat: chatId })
-            .populate('sender', 'firstName lastName avatar')
-            .sort({ createdAt: 1 }); // oldest first
+  const { chatId } = req.params;
+  try {
+    const messages = await Message.find({ chat: chatId })
+      .populate("sender", "firstName lastName avatar")
+      .sort({ createdAt: 1 }); // oldest first
 
-        return res.status(200).json({
-            success: true,
-            messages
-        });
-    } catch (error) {
-        return res.status(500).json({
-            success: false,
-            message: "Internal server error"
-        });
-        
-    }
+    return res.status(200).json({
+      success: true,
+      messages,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Internal server error",
+    });
+  }
 }

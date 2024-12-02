@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { BsSendFill } from "react-icons/bs";
-import { BASE_URL } from "../utils/constants";
+import { BASE_URL, SOCKET_URL } from "../utils/constants";
 import { RootState } from "../store/store";
 import { useSelector } from "react-redux";
+import { useSocket } from "../utils/useSocket";
+import { io, Socket } from "socket.io-client";
 
 interface ChatWindowProps {
   contact: {
@@ -22,8 +24,11 @@ const ChatWindow = ({ contact }: ChatWindowProps) => {
   const [chatId, setChatId] = useState<string | null>(null);
   const [messages, setMessages] = useState<any[]>([]);
   const [message, setMessage] = useState<string>("");
+  const [socket, setSocket] = useState<Socket | null>(null);
 
   const { token } = useSelector((state: RootState) => state.user);
+  const lastMessageRef = useRef<HTMLDivElement>(null);
+  // const socket = useSocket();
 
   const sendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -121,6 +126,50 @@ const ChatWindow = ({ contact }: ChatWindowProps) => {
     if (contact) createOrGetChat();
   }, [contact]);
 
+
+  useEffect(() => {
+    lastMessageRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
+  useEffect(() => {
+    if (token) {
+      const new_socket = io(SOCKET_URL, {
+        transports: ["websocket", "polling"],
+        reconnection: true,
+        reconnectionAttempts: 5,
+        reconnectionDelay: 1000,
+        auth: {
+          token: token,
+        },
+      });
+      setSocket(new_socket);
+    }
+  }, [token]);
+  
+
+  useEffect(() => {
+    if (socket) {
+      socket.connect();
+      return () => {
+        socket.disconnect();
+      };
+    }
+  }, [socket]);
+
+  useEffect(() => {
+    if (chatId && socket) {
+      socket.emit("join_chat", chatId);
+      socket.on("new_message", (message) => {
+        setMessages((prev) => [...prev, message]);
+      });
+
+      return () => {
+        socket.emit("leave_chat", chatId);
+        socket.off("new_message");
+      };
+    }
+  }, [chatId, socket]);
+
   if (!contact) {
     return (
       <div className="h-full flex items-center justify-center bg-gray-50">
@@ -153,7 +202,7 @@ const ChatWindow = ({ contact }: ChatWindowProps) => {
             {error.message || String(error)}
           </p>
         )}
-        {/* Messages will go here */}
+
         {messages.map((msg) => (
           <div
             key={msg._id}
@@ -175,12 +224,13 @@ const ChatWindow = ({ contact }: ChatWindowProps) => {
             </div>
           </div>
         ))}
+
+        <div ref={lastMessageRef} />
       </div>
 
       {/* Message Input */}
       <div className="flex-none border-t bg-white p-4">
         <form className="flex gap-2 items-center" onSubmit={sendMessage}>
-
           <textarea
             placeholder="Type a message..."
             value={message}
