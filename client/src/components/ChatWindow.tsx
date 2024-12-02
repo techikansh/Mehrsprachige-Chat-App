@@ -126,7 +126,6 @@ const ChatWindow = ({ contact }: ChatWindowProps) => {
     if (contact) createOrGetChat();
   }, [contact]);
 
-
   useEffect(() => {
     lastMessageRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
@@ -145,7 +144,6 @@ const ChatWindow = ({ contact }: ChatWindowProps) => {
       setSocket(new_socket);
     }
   }, [token]);
-  
 
   useEffect(() => {
     if (socket) {
@@ -215,9 +213,16 @@ const ChatWindow = ({ contact }: ChatWindowProps) => {
                 msg.sender._id === contact?._id
                   ? "bg-white"
                   : "bg-black text-white"
-              } rounded-lg p-3 shadow`}
+              } rounded-lg p-3 shadow group relative`}
             >
-              <p className="whitespace-pre-wrap">{msg.originalContent.text}</p>
+              <p className="whitespace-pre-wrap">
+                {msg.translatedContent.text}
+              </p>
+              {msg.originalContent.text !== msg.translatedContent.text && (
+                <div className="absolute invisible group-hover:visible bg-gray-800 text-white p-2 rounded-md -top-8 left-0 whitespace-pre-wrap max-w-[100%] z-10 shadow-lg transition-opacity duration-200 ease-in-out">
+                  {msg.originalContent.text}
+                </div>
+              )}
               <span className="text-xs opacity-70">
                 {new Date(msg.createdAt).toLocaleTimeString()}
               </span>
@@ -239,7 +244,7 @@ const ChatWindow = ({ contact }: ChatWindowProps) => {
               autoResize(e);
             }}
             onKeyDown={(e) => {
-              if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) {
+              if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) {
                 e.preventDefault();
                 sendMessage(e);
               }

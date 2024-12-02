@@ -91,9 +91,10 @@ const ChatList: React.FC<ChatListProps> = ({ setSelectedContact }) => {
       }),
     });
     const data = await res.json();
-    console.log(data);
+    // console.log(data);
     if (data.success) {
-      dispatch(setUser({ ...data.user, token: token }));
+      // dispatch(setUser({ ...data.user, token: token }));
+      setAllContacts(data.user.contacts);
     }
     setInput("");
   };
@@ -113,7 +114,7 @@ const ChatList: React.FC<ChatListProps> = ({ setSelectedContact }) => {
     });
     const data = await res.json();
     if (data.success) {
-      console.log(data.users);
+      // console.log(data.users);
       setFetchedUsers(data.users);
     } else {
       setError(data.message);
@@ -123,7 +124,7 @@ const ChatList: React.FC<ChatListProps> = ({ setSelectedContact }) => {
   const fetchContactsList = async () => {
     const url = BASE_URL + "user/fetchContacts";
     const res = await fetch(url, {
-      method: "POST",
+      method: "GET",
       headers: {
         "Content-Type": "application/json",
         authorization: "Bearer " + token,
@@ -131,7 +132,7 @@ const ChatList: React.FC<ChatListProps> = ({ setSelectedContact }) => {
     });
     const data = await res.json();
     if (data.success) {
-      console.log("contacts: ", data.contacts);
+      // console.log("contacts: ", data.contacts);
       setAllContacts(data.contacts);
     } else {
       setError(data.message);
@@ -152,7 +153,8 @@ const ChatList: React.FC<ChatListProps> = ({ setSelectedContact }) => {
       {/* Header Section */}
       <div className="sticky top-0 bg-white border-b shadow-sm p-4 z-10">
         <div className="flex justify-between items-center max-w-3xl mx-auto gap-2">
-          <h1 className="text-2xl font-bold text-gray-800">Messages</h1>
+          {/* <h1 className="text-2xl font-bold text-gray-800">Messages</h1> */}
+          <button className=" bg-black text-white rounded-xl p-2 px2- shrink-0">Gruppe Erstellen</button>
 
           {/* Search Section */}
           <div className="relative w-72">

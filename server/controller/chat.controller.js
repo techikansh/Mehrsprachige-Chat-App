@@ -1,3 +1,4 @@
+import { translateText } from "../middleware/utils.js";
 import Chat from "../models/Chat.model.js";
 import Message from "../models/Message.model.js";
 import User from "../models/User.model.js";
@@ -79,17 +80,38 @@ export async function sendMessage(req, res) {
       });
     }
 
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found",
+      });
+    }
+
+    const receiver = await User.findById(receiverId);
+    if (!receiver)  {
+      return res.status(404).json({
+        success: false,
+        message: "Reeiver not found",
+      });
+    }
+
+
+    
+    const prefferedLanguage = receiver.prefferedLanguage;
+    const translatedText = await translateText(text, prefferedLanguage);
+
     const message = await Message.create({
       sender: userId,
       receiver: receiverId,
       chat: chatId,
       originalContent: {
         text,
-        language: "en", // For now hardcoding to English
+        // language: "en", // For now hardcoding to English
       },
       translatedContent: {
-        text,
-        language: "en", // For now same as original
+        text: translatedText,
+        language: prefferedLanguage, // For now same as original
       },
     });
 

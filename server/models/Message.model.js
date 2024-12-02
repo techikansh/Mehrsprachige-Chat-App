@@ -18,7 +18,7 @@ const messageSchema = new mongoose.Schema({
     },
     originalContent: {
         text: {type: String, required: true},
-        language: {type: String, required: true},
+        // language: {type: String, required: true},
     },
     translatedContent: {
         text: {type: String, required: true},
