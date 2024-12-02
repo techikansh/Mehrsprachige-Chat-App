@@ -238,6 +238,12 @@ const ChatWindow = ({ contact }: ChatWindowProps) => {
               setMessage(e.target.value);
               autoResize(e);
             }}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) {
+                e.preventDefault();
+                sendMessage(e);
+              }
+            }}
             className="flex-1 px-4 py-2 rounded-md border border-gray-20 outline-none max-h-60 resize-none"
             rows={1}
           />

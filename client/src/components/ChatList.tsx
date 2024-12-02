@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { MdCancel } from "react-icons/md";
-import { BASE_URL } from "../utils/constants";
+import { BASE_URL, SOCKET_URL } from "../utils/constants";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../store/userSlice";
 import { RootState } from "../store/store";
 import { fetchUser } from "../utils/helper";
+// import { useSocket } from "../utils/useSocket";
+import { io, Socket } from "socket.io-client";
 
 interface ChatListProps {
   setSelectedContact: React.Dispatch<React.SetStateAction<any>>;
@@ -15,8 +17,43 @@ const ChatList: React.FC<ChatListProps> = ({ setSelectedContact }) => {
   const { token } = useSelector((state: RootState) => state.user);
   const [fetchedUsers, setFetchedUsers] = useState<any[]>([]);
   const [error, setError] = useState<string | null>(null);
-  const dispatch = useDispatch();
   const [allContacts, setAllContacts] = useState<any[]>([]);
+  const [socket, setSocket] = useState<Socket | null>(null);
+
+  const dispatch = useDispatch();
+  // const socket = useSocket();
+  useEffect(() => {
+    if (token) {
+      const new_socket = io(SOCKET_URL, {
+        transports: ["websocket", "polling"],
+        reconnection: true,
+        reconnectionAttempts: 5,
+        reconnectionDelay: 1000,
+        auth: {
+          token: token,
+        },
+      });
+      setSocket(new_socket);
+    }
+  },[])
+
+  useEffect(() => {
+    if (socket) {
+      socket.on("user_status_change", ({ userId, status }) => {
+        setAllContacts(prevContacts => 
+          prevContacts.map(contact => 
+            contact._id === userId 
+              ? { ...contact, status } 
+              : contact
+          )
+        );
+      });
+
+      return () => {
+        socket.off("user_status_change");
+      };
+    }
+  }, [socket]);
 
   const {
     firstName,

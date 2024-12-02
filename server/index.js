@@ -97,7 +97,7 @@ io.on("connection", (socket) => {
     updateStatus(userId, "online");
 
     // Emit status change to all connected clients
-    // io.emit("user_status_c hange", { userId, status: "online" });
+    io.emit("user_status_change", { userId, status: "online" });
 
     socket.on("join_chat", (chatId) => {
       socket.join(chatId);
@@ -112,8 +112,8 @@ io.on("connection", (socket) => {
     socket.on("disconnect", () => {
       console.log(`User ${userId} disconnected: `, socket.id);
       updateStatus(userId, "offline");
-      // Emit status change when user disconnects
-      //   io.emit("user_status_change", { userId, status: "offline" });
+    //   Emit status change when user disconnects
+        io.emit("user_status_change", { userId, status: "offline" });
     });
   } catch (error) {
     console.log(error);
