@@ -7,6 +7,7 @@ import { RootState } from "../store/store";
 import { fetchUser } from "../utils/helper";
 // import { useSocket } from "../utils/useSocket";
 import { io, Socket } from "socket.io-client";
+import GroupChatModal from "./GroupChatModal";
 
 interface ChatListProps {
   setSelectedContact: React.Dispatch<React.SetStateAction<any>>;
@@ -19,6 +20,7 @@ const ChatList: React.FC<ChatListProps> = ({ setSelectedContact }) => {
   const [error, setError] = useState<string | null>(null);
   const [allContacts, setAllContacts] = useState<any[]>([]);
   const [socket, setSocket] = useState<Socket | null>(null);
+  const [openModal, setOpenModal] = useState(false);
 
   const dispatch = useDispatch();
   // const socket = useSocket();
@@ -35,16 +37,14 @@ const ChatList: React.FC<ChatListProps> = ({ setSelectedContact }) => {
       });
       setSocket(new_socket);
     }
-  },[])
+  }, []);
 
   useEffect(() => {
     if (socket) {
       socket.on("user_status_change", ({ userId, status }) => {
-        setAllContacts(prevContacts => 
-          prevContacts.map(contact => 
-            contact._id === userId 
-              ? { ...contact, status } 
-              : contact
+        setAllContacts((prevContacts) =>
+          prevContacts.map((contact) =>
+            contact._id === userId ? { ...contact, status } : contact
           )
         );
       });
@@ -150,11 +150,14 @@ const ChatList: React.FC<ChatListProps> = ({ setSelectedContact }) => {
 
   return (
     <div className="h-full flex flex-col">
+
+      {openModal && <GroupChatModal setOpenModal={setOpenModal}/>}
       {/* Header Section */}
       <div className="sticky top-0 bg-white border-b shadow-sm p-4 z-10">
         <div className="flex justify-between items-center max-w-3xl mx-auto gap-2">
-          {/* <h1 className="text-2xl font-bold text-gray-800">Messages</h1> */}
-          <button className=" bg-black text-white rounded-xl p-2 px2- shrink-0">Gruppe Erstellen</button>
+          <button className=" bg-black text-white rounded-xl p-2 px2- shrink-0" onClick={() => setOpenModal(true)}>
+            Gruppe Erstellen
+          </button>
 
           {/* Search Section */}
           <div className="relative w-72">

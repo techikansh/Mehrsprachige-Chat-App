@@ -6,11 +6,17 @@ import User from "../models/User.model.js";
 export async function findUsers(req, res) {
   const { searchString } = req.body;
   const { userId, email } = req.user;
+
   try {
     const users = await User.find({
-      $or: [
-        { firstName: { $regex: searchString, $options: "i" } },
-        { lastName: { $regex: searchString, $options: "i" } },
+      $and: [
+        {
+          $or: [
+            { firstName: { $regex: searchString, $options: "i" } },
+            { lastName: { $regex: searchString, $options: "i" } },
+          ],
+        },
+        { _id: { $ne: userId } }, // Exclude the user with the same _id as userId
       ],
     });
 
@@ -89,15 +95,13 @@ export async function sendMessage(req, res) {
     }
 
     const receiver = await User.findById(receiverId);
-    if (!receiver)  {
+    if (!receiver) {
       return res.status(404).json({
         success: false,
         message: "Reeiver not found",
       });
     }
 
-
-    
     const prefferedLanguage = receiver.prefferedLanguage;
     const translatedText = await translateText(text, prefferedLanguage);
 
@@ -117,14 +121,13 @@ export async function sendMessage(req, res) {
 
     // Populate sender information
     await message.populate("sender", "firstName lastName avatar");
-    console.log(message)
+    console.log(message);
 
     // Update last message in chat
     await Chat.findByIdAndUpdate(chatId, { lastMessage: message._id });
 
     // Emit the new message to all users in the chat
-    req.app.get('io').to(chatId).emit('new_message', message);
-
+    req.app.get("io").to(chatId).emit("new_message", message);
 
     return res.status(200).json({
       success: true,
@@ -138,7 +141,6 @@ export async function sendMessage(req, res) {
   }
 }
 
-// Get chat messages
 export async function getChatMessages(req, res) {
   const { chatId } = req.params;
   try {
@@ -151,6 +153,97 @@ export async function getChatMessages(req, res) {
       messages,
     });
   } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Internal server error",
+    });
+  }
+}
+
+export async function createGroup(req, res) {
+  const { userId } = req.user;
+  const { groupName, participants, commonLanguage, groupIcon } = req.body;
+
+  try {
+    const chat = await Chat.create({
+      chatType: "group",
+      participants: participants,
+      groupName: groupName,
+      commonLanguage: commonLanguage,
+      groupIcon: groupIcon,
+    });
+
+    await chat.populate("participants", "firstName lastName avatar");
+
+    return res.status(200).json({
+      success: true,
+      chat: chat,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      success: false,
+      message: "Internal server error",
+    });
+  }
+}
+
+export async function updateGroupSettings(req, res) {
+  const { userId } = req.user;
+  const { chatId } = req.params;
+  const { groupName, commonLanguage, participants, groupIcon } = req.body;
+
+  try {
+    const updateFields = {};
+    if (groupName) updateFields.groupName = groupName;
+    if (commonLanguage) updateFields.commonLanguage = commonLanguage;
+    if (participants) updateFields.participants = participants;
+    if (groupIcon) updateFields.groupIcon = groupIcon;
+
+    const chat = await Chat.findByIdAndUpdate(
+      chatId,
+      {
+        $set: updateFields,
+      },
+      { new: true }
+    ).populate("participants", "firstName lastName avatar");
+
+    if (!chat) {
+      return res.status(404).json({
+        success: false,
+        message: "Group not found",
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      chat,
+      message: "Group settings updated successfully",
+    });
+  } catch (error) {
+    console.error("Error updating group settings:", error);
+    return res.status(500).json({
+      success: false,
+      message: "Internal server error",
+    });
+  }
+}
+
+export async function fetchUserChats(req, res) {
+  const { userId } = req.user;
+  try {
+    const chats = await Chat.find({
+      participants: userId,
+    })
+      .populate("participants", "firstName lastName avatar")
+      .populate("lastMessage");
+
+    return res.status(200).json({
+      success: true,
+      chats,
+    });
+  } catch (error) {
+    console.log(error);
     return res.status(500).json({
       success: false,
       message: "Internal server error",
