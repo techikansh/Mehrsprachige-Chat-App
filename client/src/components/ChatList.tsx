@@ -152,6 +152,7 @@ const ChatList: React.FC<ChatListProps> = ({ setSelectedContact }) => {
     <div className="h-full flex flex-col">
 
       {openModal && <GroupChatModal setOpenModal={setOpenModal}/>}
+      
       {/* Header Section */}
       <div className="sticky top-0 bg-white border-b shadow-sm p-4 z-10">
         <div className="flex justify-between items-center max-w-3xl mx-auto gap-2">
