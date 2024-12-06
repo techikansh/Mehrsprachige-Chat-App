@@ -5,16 +5,18 @@ import ChatWindow from "../components/ChatWindow";
 
 const Home = () => {
   const [selectedContact, setSelectedContact] = useState<any>(null);
+  const [selectedChat, setSelectedChat] = useState<any>(null);
+  
 
   return (
     <div className="h-screen flex flex-col">
       <Header />
       <div className="flex-1 flex overflow-hidden">
         <div className="w-[20rem] md:w-[28rem] 2xl:w-[32rem] border bg-gray-100">
-          <ChatList setSelectedContact={setSelectedContact} />
+          <ChatList setSelectedContact={setSelectedContact} setSelectedChat={setSelectedChat} />
         </div>
         <div className="flex-1">
-          <ChatWindow contact={selectedContact} />
+          <ChatWindow contact={selectedContact} propChat={selectedChat} />
         </div>
       </div>
     </div>

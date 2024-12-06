@@ -6,9 +6,10 @@ import { BASE_URL } from "../utils/constants";
 
 interface GroupChatModalProps {
   setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
+  setSelectedChat: React.Dispatch<React.SetStateAction<any>>;
 }
 
-const GroupChatModal: React.FC<GroupChatModalProps> = ({ setOpenModal }) => {
+const GroupChatModal: React.FC<GroupChatModalProps> = ({ setOpenModal, setSelectedChat }) => {
   const [imageToUpload, setImageToUpload] = useState<File | null>(null);
   const [imageUrl, setImageUrl] = useState<string>("");
   const [groupName, setGroupName] = useState<string>("");
@@ -23,6 +24,39 @@ const GroupChatModal: React.FC<GroupChatModalProps> = ({ setOpenModal }) => {
 
   const createGroup = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    console.log("participants", participants);
+    console.log(groupName, commonLanguage)
+    const url = BASE_URL + "chat/createGroup";
+    try {
+      const res = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: "Bearer " + token,
+        },
+        body: JSON.stringify({
+          groupName,
+          participants,
+          commonLanguage,
+          imageUrl,
+        }),
+      })
+      const data = await res.json();
+      console.log(data);
+      if (data.success) {
+        setSelectedChat(data.chat);
+        setOpenModal(false);
+      }
+      else {
+        setError(data.message);
+      }
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        setError(error.message);
+      } else {
+        setError('An unexpected error occurred');
+      }
+    }
   };
 
   const fetchUsers = async () => {
