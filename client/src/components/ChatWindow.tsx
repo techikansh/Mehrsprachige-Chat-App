@@ -5,6 +5,8 @@ import { RootState } from "../store/store";
 import { useSelector } from "react-redux";
 import { io, Socket } from "socket.io-client";
 import EditGroupSettingsModal from "./EditGroupSettingsModal";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { storage } from "../utils/FirebaseConfig";
 
 interface ChatWindowProps {
   contact: {
@@ -36,13 +38,10 @@ const ChatWindow = ({ contact, propChat, updateChat, setAllChats }: ChatWindowPr
   const [messages, setMessages] = useState<any[]>([]);
   const [message, setMessage] = useState<string>("");
   const [socket, setSocket] = useState<Socket | null>(null);
-  const [openEditGroupSettingsModal, setOpenEditGroupSettingsModal] =
-    useState(false);
+  const [openEditGroupSettingsModal, setOpenEditGroupSettingsModal] = useState(false);
   const [propChatState, setPropChatState] = useState<any>(propChat);
 
-  const { email: userEmail, token, id } = useSelector(
-    (state: RootState) => state.user
-  );
+  const { email: userEmail, token, id } = useSelector((state: RootState) => state.user);
   const lastMessageRef = useRef<HTMLDivElement>(null);
 
   const sendMessage = async (e: React.FormEvent) => {
@@ -70,19 +69,16 @@ const ChatWindow = ({ contact, propChat, updateChat, setAllChats }: ChatWindowPr
         setMessage("");
         fetchMessages(chatId);
         // console.log('chat:', data.chat)
-        setPropChatState(data.chat)
+        setPropChatState(data.chat);
         setAllChats((prevChats) => {
-          const filteredChats = prevChats.filter(chat => chat._id !== data.chat._id);
+          const filteredChats = prevChats.filter((chat) => chat._id !== data.chat._id);
           return [data.chat, ...filteredChats];
         });
-
       } else {
         setError(data.message);
       }
     } catch (err) {
-      setError(
-        err instanceof Error ? err : new Error("Failed to send message")
-      );
+      setError(err instanceof Error ? err : new Error("Failed to send message"));
     }
     setMessage("");
   };
@@ -132,9 +128,7 @@ const ChatWindow = ({ contact, propChat, updateChat, setAllChats }: ChatWindowPr
         setError(data.message);
       }
     } catch (err) {
-      setError(
-        err instanceof Error ? err : new Error("Failed to fetch messages")
-      );
+      setError(err instanceof Error ? err : new Error("Failed to fetch messages"));
     }
   };
 
@@ -155,26 +149,26 @@ const ChatWindow = ({ contact, propChat, updateChat, setAllChats }: ChatWindowPr
       });
       const data = await res.json();
       if (data.success) {
-        console.log(data)
+        console.log(data);
         setMessages((prevMessages) => {
-          return prevMessages.map(msg => {
+          return prevMessages.map((msg) => {
             if (msg._id === messageId) {
               return { ...msg, readBy: [...msg.readBy, id] };
             }
             return msg;
           });
         });
-        
+
         // Update the all chats list if this was the last message
         setAllChats((prevChats) => {
-          return prevChats.map(chat => {
+          return prevChats.map((chat) => {
             if (chat.lastMessage?._id === messageId) {
               return {
                 ...chat,
                 lastMessage: {
                   ...chat.lastMessage,
-                  readBy: [...chat.lastMessage.readBy, id]
-                }
+                  readBy: [...chat.lastMessage.readBy, id],
+                },
               };
             }
             return chat;
@@ -184,11 +178,9 @@ const ChatWindow = ({ contact, propChat, updateChat, setAllChats }: ChatWindowPr
         console.error("Failed to update message read by");
       }
     } catch (err) {
-      setError(
-        err instanceof Error ? err : new Error("Failed to update message read by")
-      );
+      setError(err instanceof Error ? err : new Error("Failed to update message read by"));
     }
-  }
+  };
 
   const autoResize = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const textarea = e.target;
@@ -235,7 +227,7 @@ const ChatWindow = ({ contact, propChat, updateChat, setAllChats }: ChatWindowPr
     if (chatId && socket) {
       socket.emit("join_chat", chatId);
       socket.on("new_message", (data) => {
-        const {message, chat} = data;
+        const { message, chat } = data;
         setMessages((prev) => [...prev, message]);
       });
 
@@ -288,42 +280,53 @@ const ChatWindow = ({ contact, propChat, updateChat, setAllChats }: ChatWindowPr
 
           {/* Chat Messages */}
           <div className="flex-1 overflow-y-auto p-4 bg-gray-50">
-            {error && (
-              <p className="text-red-500 text-sm">
-                {error.message || String(error)}
-              </p>
-            )}
+            {error && <p className="text-red-500 text-sm">{error.message || String(error)}</p>}
 
-            {messages.map((msg) => (
-              <div
-                key={msg._id}
-                className={`flex ${
-                  msg.sender._id === contact?._id
-                    ? "justify-start"
-                    : "justify-end"
-                } mb-4`}
-              >
+            {messages.map((msg) => {
+              const isOwnMessage = msg.sender.email === userEmail;
+              return (
                 <div
-                  className={`max-w-[50%] ${
-                    msg.sender._id === contact?._id
-                      ? "bg-white"
-                      : "bg-black text-white"
-                  } rounded-lg p-3 shadow group relative`}
+                  key={msg._id}
+                  className={`flex ${
+                    isOwnMessage ? "justify-end" : "justify-start"
+                  } mb-4 items-end gap-2`}
                 >
-                  <p className="whitespace-pre-wrap">
-                    {msg.translatedContent.text}
-                  </p>
-                  {msg.originalContent.text !== msg.translatedContent.text && (
-                    <div className="absolute invisible group-hover:visible bg-gray-800 text-white p-2 rounded-md -top-8 left-0 whitespace-pre-wrap max-w-[100%] z-10 shadow-lg transition-opacity duration-200 ease-in-out">
-                      {msg.originalContent.text}
-                    </div>
+                  {/* Profile picture for other user's messages */}
+                  {!isOwnMessage && (
+                    <img
+                      src={msg.sender.avatar}
+                      alt={`${msg.sender.firstName}'s avatar`}
+                      className="w-8 h-8 rounded-full object-cover"
+                    />
                   )}
-                  <span className="text-xs opacity-70">
-                    {new Date(msg.createdAt).toLocaleTimeString()}
-                  </span>
+
+                  <div
+                    className={`max-w-[50%] ${
+                      isOwnMessage ? "bg-black text-white" : "bg-white"
+                    } rounded-lg p-3 shadow group relative`}
+                  >
+                    <p className="whitespace-pre-wrap">{msg.translatedContent.text}</p>
+                    {msg.originalContent.text !== msg.translatedContent.text && (
+                      <div className="absolute invisible group-hover:visible bg-gray-800 text-white p-2 rounded-md -top-8 left-0 whitespace-pre-wrap max-w-[100%] z-10 shadow-lg transition-opacity duration-200 ease-in-out">
+                        {msg.originalContent.text}
+                      </div>
+                    )}
+                    <span className="text-xs opacity-70">
+                      {new Date(msg.createdAt).toLocaleTimeString()}
+                    </span>
+                  </div>
+
+                  {/* Profile picture for own messages */}
+                  {isOwnMessage && (
+                    <img
+                      src={msg.sender.avatar}
+                      alt={`${msg.sender.firstName}'s avatar`}
+                      className="w-8 h-8 rounded-full object-cover"
+                    />
+                  )}
                 </div>
-              </div>
-            ))}
+              );
+            })}
 
             <div ref={lastMessageRef} />
           </div>
@@ -360,9 +363,9 @@ const ChatWindow = ({ contact, propChat, updateChat, setAllChats }: ChatWindowPr
       )}
 
       {openEditGroupSettingsModal && (
-        <EditGroupSettingsModal 
-          setOpenModal={setOpenEditGroupSettingsModal} 
-          chat={propChat} 
+        <EditGroupSettingsModal
+          setOpenModal={setOpenEditGroupSettingsModal}
+          chat={propChat}
           setPropChatState={(updatedChat) => {
             setPropChatState(updatedChat);
             updateChat(updatedChat);
@@ -414,7 +417,10 @@ const ChatWindow = ({ contact, propChat, updateChat, setAllChats }: ChatWindowPr
                   className="p-2 hover:bg-gray-100 rounded-full transition-colors self-center"
                   onClick={() => {}}
                 >
-                  <BsGear className="w-5 h-5 text-gray-600" onClick={() => setOpenEditGroupSettingsModal(true)}/>
+                  <BsGear
+                    className="w-5 h-5 text-gray-600"
+                    onClick={() => setOpenEditGroupSettingsModal(true)}
+                  />
                 </button>
               </div>
             </div>
@@ -422,35 +428,33 @@ const ChatWindow = ({ contact, propChat, updateChat, setAllChats }: ChatWindowPr
 
           {/* Chat Messages */}
           <div className="flex-1 overflow-y-auto p-4 bg-gray-50">
-            {error && (
-              <p className="text-red-500 text-sm">
-                {error.message || String(error)}
-              </p>
-            )}
+            {error && <p className="text-red-500 text-sm">{error.message || String(error)}</p>}
 
             {messages.map((msg) => {
-              console.log(msg, userEmail);
+              const isOwnMessage = msg.sender.email === userEmail;
               return (
                 <div
                   key={msg._id}
                   className={`flex ${
-                    msg.sender.email === userEmail
-                      ? "justify-end"
-                      : "justify-start"
-                  } mb-4`}
+                    isOwnMessage ? "justify-end" : "justify-start"
+                  } mb-4 items-end gap-2`}
                 >
+                  {/* Profile picture for other user's messages */}
+                  {!isOwnMessage && (
+                    <img
+                      src={msg.sender.avatar}
+                      alt={`${msg.sender.firstName}'s avatar`}
+                      className="w-8 h-8 rounded-full object-cover"
+                    />
+                  )}
+
                   <div
                     className={`max-w-[50%] ${
-                      msg.sender.email === userEmail
-                        ? "bg-black text-white"
-                        : "bg-white"
+                      isOwnMessage ? "bg-black text-white" : "bg-white"
                     } rounded-lg p-3 shadow group relative`}
                   >
-                    <p className="whitespace-pre-wrap">
-                      {msg.translatedContent.text}
-                    </p>
-                    {msg.originalContent.text !==
-                      msg.translatedContent.text && (
+                    <p className="whitespace-pre-wrap">{msg.translatedContent.text}</p>
+                    {msg.originalContent.text !== msg.translatedContent.text && (
                       <div className="absolute invisible group-hover:visible bg-gray-800 text-white p-2 rounded-md -top-8 left-0 whitespace-pre-wrap max-w-[100%] z-10 shadow-lg transition-opacity duration-200 ease-in-out">
                         {msg.originalContent.text}
                       </div>
@@ -459,6 +463,15 @@ const ChatWindow = ({ contact, propChat, updateChat, setAllChats }: ChatWindowPr
                       {new Date(msg.createdAt).toLocaleTimeString()}
                     </span>
                   </div>
+
+                  {/* Profile picture for own messages */}
+                  {isOwnMessage && (
+                    <img
+                      src={msg.sender.avatar}
+                      alt={`${msg.sender.firstName}'s avatar`}
+                      className="w-8 h-8 rounded-full object-cover"
+                    />
+                  )}
                 </div>
               );
             })}

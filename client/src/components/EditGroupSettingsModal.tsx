@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { MdCancel } from "react-icons/md";
 import { BASE_URL } from "../utils/constants";
 import { RootState } from "../store/store";
 import { useSelector } from "react-redux";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { storage } from "../utils/FirebaseConfig";
 
 interface EditGroupSettingsModalProps {
   setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -18,20 +20,34 @@ interface EditGroupSettingsModalProps {
   setPropChatState: React.Dispatch<React.SetStateAction<any>>;
 }
 
-const EditGroupSettingsModal: React.FC<EditGroupSettingsModalProps> = ({ setOpenModal, chat, setPropChatState }) => {
+const EditGroupSettingsModal: React.FC<EditGroupSettingsModalProps> = ({
+  setOpenModal,
+  chat,
+  setPropChatState,
+}) => {
+
+  const fileRef = useRef<HTMLInputElement>(null);
 
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const { token } = useSelector((state: RootState) => state.user);
 
   const [groupName, setGroupName] = useState<string>(chat?.groupName || "");
-  const [participants, setParticipants] = useState<string[]>(chat?.participants.map((participant) => participant._id) || []);
-  const [participantsPopulated, setParticipantsPopulated] = useState<any[]>(chat?.participants || []);
+  const [participants, setParticipants] = useState<string[]>(
+    chat?.participants.map((participant) => participant._id) || []
+  );
+  const [participantsPopulated, setParticipantsPopulated] = useState<any[]>(
+    chat?.participants || []
+  );
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [fetchedUsers, setFetchedUsers] = useState<any[]>([]);
   const [commonLanguage, setCommonLanguage] = useState<string>(chat?.commonLanguage || "");
 
-//   console.log("participants: ", participants);
+  const [isUploading, setIsUploading] = useState(false);
+  const [uploadError, setUploadError] = useState<string | null>(null);
+  const [groupIconState, setGroupIconState] = useState<string | null>(chat?.groupIcon || null);
+
+  //   console.log("participants: ", participants);
 
   const editGroup = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -40,35 +56,35 @@ const EditGroupSettingsModal: React.FC<EditGroupSettingsModalProps> = ({ setOpen
     setLoading(true);
 
     try {
-        const url = BASE_URL + "chat/editGroup/" + chat?._id;
-        const res = await fetch(url, {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-            authorization: "Bearer " + token,
-          },
-          body: JSON.stringify({
-            groupName: groupName,
-            participants: participants,
-            commonLanguage: commonLanguage,
-            groupIcon: chat?.groupIcon,
-          }),
-        });
-        const data = await res.json();
-        if (data.success) {
-            console.log(data.chat);
-            setLoading(false);
-            setPropChatState(data.chat);
-            setOpenModal(false);
-        } else {
-          console.log(data.message);
-          setLoading(false);
-          setError(data.message);
-        }
-    } catch (error) {
-        console.log(error);
+      const url = BASE_URL + "chat/editGroup/" + chat?._id;
+      const res = await fetch(url, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: "Bearer " + token,
+        },
+        body: JSON.stringify({
+          groupName: groupName,
+          participants: participants,
+          commonLanguage: commonLanguage,
+          groupIcon: groupIconState,
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        console.log(data.chat);
         setLoading(false);
-        setError(error instanceof Error ? error.message : String(error));
+        setPropChatState(data.chat);
+        setOpenModal(false);
+      } else {
+        console.log(data.message);
+        setLoading(false);
+        setError(data.message);
+      }
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+      setError(error instanceof Error ? error.message : String(error));
     }
   };
 
@@ -107,6 +123,34 @@ const EditGroupSettingsModal: React.FC<EditGroupSettingsModalProps> = ({ setOpen
     }
   };
 
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setUploadError(null);
+      setIsUploading(true);
+
+      try {
+        if (file.size > 2 * 1024 * 1024) {
+          throw new Error("File size must be less than 2MB");
+        }
+
+        if (!file.type.startsWith("image/")) {
+          throw new Error("Only image files are allowed");
+        }
+        const imageRef = ref(storage, `Echtzeit-Chat-App-Thesis/${file.name}`);
+
+        const snapshot = await uploadBytes(imageRef, file);
+        const url = await getDownloadURL(snapshot.ref);
+        setGroupIconState(url);
+      } catch (error) {
+        setUploadError(error instanceof Error ? error.message : "Failed to upload image");
+        console.error("Upload error:", error);
+      } finally {
+        setIsUploading(false);
+      }
+    }
+  };
+
   useEffect(() => {
     if (searchTerm.length >= 3) fetchUsers();
     else setFetchedUsers([]);
@@ -135,17 +179,19 @@ const EditGroupSettingsModal: React.FC<EditGroupSettingsModalProps> = ({ setOpen
         </div>
 
         {/* Form */}
-        <form
-          className="p-4 gap-4 flex flex-col items-center"
-          onSubmit={(e) => editGroup(e)}
-        >
+        <form className="p-4 gap-4 flex flex-col items-center" onSubmit={(e) => editGroup(e)}>
           <div>
+            <input
+              type="file"
+              className="hidden"
+              ref={fileRef}
+              accept="image/*"
+              onChange={handleFileChange}
+            />
             <img
-              src={
-                chat?.groupIcon ||
-                "https://cdn-icons-png.flaticon.com/512/718/718339.png"
-              }
+              src={groupIconState || "https://cdn-icons-png.flaticon.com/512/718/718339.png"}
               alt="Group Icon"
+              onClick={() => fileRef.current?.click()}
               className="w-16 h-16 rounded-full object-cover border-2 border-white shadow-sm"
             />
           </div>
@@ -205,14 +251,11 @@ const EditGroupSettingsModal: React.FC<EditGroupSettingsModalProps> = ({ setOpen
                         <span className="font-medium text-gray-900">
                           {fetchedUser.firstName} {fetchedUser.lastName}
                         </span>
-                        <span className="text-sm text-gray-500">
-                          {fetchedUser.status}
-                        </span>
+                        <span className="text-sm text-gray-500">{fetchedUser.status}</span>
                       </div>
                     </div>
                   </div>
                 ))}
-
               </div>
             </div>
           </div>
@@ -249,10 +292,7 @@ const EditGroupSettingsModal: React.FC<EditGroupSettingsModalProps> = ({ setOpen
 
                 <div className="flex flex-col w-full px-2 py-2 gap-4 max-h-72 overflow-y-auto">
                   {participantsPopulated.map((participant, index) => (
-                    <div
-                      className="flex items-center gap-3 w-full px-2"
-                      key={index}
-                    >
+                    <div className="flex items-center gap-3 w-full px-2" key={index}>
                       <img
                         src={participant.avatar}
                         alt={`${participant.firstName}'s avatar`}
@@ -263,33 +303,32 @@ const EditGroupSettingsModal: React.FC<EditGroupSettingsModalProps> = ({ setOpen
                         <span className="font-medium text-gray-900">
                           {participant.firstName} {participant.lastName}
                         </span>
-                        <span className="text-sm text-gray-500">
-                          {participant.status}
-                        </span>
+                        <span className="text-sm text-gray-500">{participant.status}</span>
                       </div>
 
                       <MdCancel
                         className="text-gray-400 hover:text-gray-600 cursor-pointer w-5 h-5 ml-auto"
                         onClick={() => {
                           setParticipants(participants.filter((p) => p !== participant._id));
-                          setParticipantsPopulated(participantsPopulated.filter((p) => p._id !== participant._id));
+                          setParticipantsPopulated(
+                            participantsPopulated.filter((p) => p._id !== participant._id)
+                          );
                         }}
                       />
-
                     </div>
                   ))}
 
-                  { error && (
-                        <p className="text-red-500 text-center self-center text-sm transition-opacity duration-500 ease-in-out">{error}</p>
-                    )
-                  }
+                  {error && (
+                    <p className="text-red-500 text-center self-center text-sm transition-opacity duration-500 ease-in-out">
+                      {error}
+                    </p>
+                  )}
                 </div>
-
               </div>
             </div>
           )}
 
-        <button
+          <button
             type="submit"
             className="bg-black text-white rounded-md p-2 px-4 shrink-0 mt-8 mb-4"
           >
