@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface UserState {
+  id: string | null;
   firstName: string | null;
   lastName: string | null;
   email: string | null;
@@ -15,6 +16,7 @@ interface UserState {
 }
 
 const initialState: UserState = {
+  id: null,
   firstName: null,
   lastName: null,
   email: null,
@@ -34,6 +36,7 @@ const userSlice = createSlice({
     setUser: (
       state,
       action: PayloadAction<{
+        id: string;
         email: string;
         token: string;
         firstName?: string;
@@ -45,6 +48,7 @@ const userSlice = createSlice({
         contacts?: any[];
       }>
     ) => {
+      state.id = action.payload.id;
       state.email = action.payload.email;
       state.token = action.payload.token;
       state.isAuthenticated = true;
@@ -61,6 +65,7 @@ const userSlice = createSlice({
       localStorage.setItem("token", action.payload.token);
     },
     logout: (state) => {
+      state.id = null;
       state.email = null;
       state.firstName = null;
       state.lastName = null;

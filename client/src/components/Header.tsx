@@ -24,7 +24,7 @@ const Header = () => {
 
   return (
     <header className=" flex justify-between py-2 px-10 sm:px-14 md:px-18 lg:px-24 2xl:px-28 items-center border-b border-gray-200 bg-white shadow-md">
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-3 hover:cursor-pointer" onClick={() => navigate("/")} title="Home">
         <svg
           className="h-8 w-8 text-blue-500"
           viewBox="0 0 24 24"
@@ -35,7 +35,7 @@ const Header = () => {
         <h1 className="text-2xl font-semibold">Teams</h1>
       </div>
 
-      <div className="flex gap-3 items-center">
+      <div className="flex gap-3 items-center hover:cursor-pointer" onClick={() => navigate("/profile")} title="Profile">
         {isAuthenticated && (
           <div className="bg-gray-800 text-white p-2 py rounded-full">{firstName?.charAt(0)}{lastName?.charAt(0)}</div>
         )}

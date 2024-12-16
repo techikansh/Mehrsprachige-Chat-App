@@ -37,7 +37,8 @@ const Login = () => {
     console.log(data);
     if (data.success) {
       setLoading(false);
-      dispatch(setUser({ ...data.user, token: data.token }));
+      console.log(data.user)
+      dispatch(setUser({ ...data.user, id: data.user._id, token: data.token }));
       navigate("/");
     } else {
       setError(data.message);

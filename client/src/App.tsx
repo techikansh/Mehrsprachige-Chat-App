@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Athenticated from "./components/Athenticated";
+import Profile from "./pages/Profile";
 
 function App() {
   return (
@@ -14,6 +15,14 @@ function App() {
             element={
               <Athenticated>
                 <Home />
+              </Athenticated>
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <Athenticated>
+                <Profile />
               </Athenticated>
             }
           />

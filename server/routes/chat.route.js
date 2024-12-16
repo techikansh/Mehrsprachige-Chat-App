@@ -6,7 +6,9 @@ import {
     sendMessage,
     getChatMessages,
     createGroup,
+    updateGroupSettings,
     fetchUserChats,
+    updateMessage,
 } from "../controller/chat.controller.js";
 
 const router = express.Router();
@@ -16,6 +18,8 @@ router.post("/createChat", authenticateToken, createOrGetChat);
 router.post("/sendMessage", authenticateToken, sendMessage);
 router.get("/getMessages/:chatId", authenticateToken, getChatMessages);
 router.post("/createGroup", authenticateToken, createGroup);
+router.put("/editGroup/:chatId", authenticateToken, updateGroupSettings);
 router.get("/fetchUserChats", authenticateToken, fetchUserChats);
+router.put("/updateMessage/:messageId", authenticateToken, updateMessage);
 
 export default router;
