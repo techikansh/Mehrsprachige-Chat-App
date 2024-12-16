@@ -9,6 +9,7 @@ import {
     updateGroupSettings,
     fetchUserChats,
     updateMessage,
+    deleteMessage
 } from "../controller/chat.controller.js";
 
 const router = express.Router();
@@ -21,5 +22,6 @@ router.post("/createGroup", authenticateToken, createGroup);
 router.put("/editGroup/:chatId", authenticateToken, updateGroupSettings);
 router.get("/fetchUserChats", authenticateToken, fetchUserChats);
 router.put("/updateMessage/:messageId", authenticateToken, updateMessage);
+router.delete("/deleteMessage/:messageId", authenticateToken, deleteMessage);
 
 export default router;

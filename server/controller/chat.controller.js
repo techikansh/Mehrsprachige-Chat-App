@@ -151,13 +151,10 @@ export async function sendMessage(req, res) {
       { new: true }
     )
       .populate("participants", "firstName lastName email avatar status")
-      .populate(
-        "lastMessage",
-        "sender receiver translatedContent.text createdAt readBy"
-      );
+      .populate("lastMessage", "sender receiver translatedContent.text createdAt readBy");
 
     // Emit the new message to all users in the chat
-    req.app.get("io").to(chatId).emit("new_message", {message, chat: updatedChat});
+    req.app.get("io").to(chatId).emit("new_message", { message, chat: updatedChat });
 
     return res.status(200).json({
       success: true,
@@ -171,7 +168,7 @@ export async function sendMessage(req, res) {
     });
   }
 }
-export async function updateMessage (req, res){
+export async function updateMessage(req, res) {
   const messageId = req.params.messageId;
   const { readBy } = req.body;
 
@@ -193,7 +190,6 @@ export async function updateMessage (req, res){
       success: true,
       message,
     });
-
   } catch (error) {
     return res.status(500).json({
       success: false,
@@ -202,6 +198,64 @@ export async function updateMessage (req, res){
   }
 }
 
+export async function deleteMessage(req, res) {
+  const messageId = req.params.messageId;
+  const { userId } = req.user;
+  const { chatId } = req.body;
+  
+  try {
+    const message = await Message.findById(messageId);
+    
+    if (!message) {
+      return res.status(404).json({
+        success: false,
+        message: "Message not found",
+      });
+    }
+    
+    if (message.sender != userId) {
+      return res.status(403).json({
+        success: false,
+        message: "You are not authorized to delete this message",
+      });
+    }
+    
+    await Message.deleteOne({ _id: messageId });
+
+    const messages = await Message.find({ chat: chatId })
+      .populate("sender", "firstName lastName email avatar")
+      .sort({ createdAt: 1 }); // oldest first
+
+    // Update last message in chat - handle empty messages case
+    const lastMessage = messages.length > 0 ? messages[messages.length - 1]._id : null;
+    
+    const updatedChat = await Chat.findByIdAndUpdate(
+      chatId,
+      {
+        lastMessage: lastMessage, // can be null if no messages left
+      },
+      { new: true }
+    )
+      .populate("participants", "firstName lastName email avatar status")
+      .populate("lastMessage", "sender receiver translatedContent.text createdAt readBy");
+
+    // Emit the new message to all users in the chat
+    req.app.get("io").to(chatId).emit("new_message", { message, chat: updatedChat });
+
+    return res.status(200).json({
+      success: true,
+      message: "Message deleted successfully",
+      messages,
+      chat: updatedChat
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      success: false,
+      message: "Internal server error",
+    });
+  }
+}
 
 export async function getChatMessages(req, res) {
   const { chatId } = req.params;
@@ -305,10 +359,7 @@ export async function fetchUserChats(req, res) {
     })
       .sort({ lastMessage: -1 })
       .populate("participants", "firstName lastName email avatar status")
-      .populate(
-        "lastMessage",
-        "sender receiver translatedContent.text createdAt readBy"
-      );
+      .populate("lastMessage", "sender receiver translatedContent.text createdAt readBy");
 
     // console.log(chats);
     return res.status(200).json({

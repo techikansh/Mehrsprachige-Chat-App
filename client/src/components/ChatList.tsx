@@ -169,6 +169,37 @@ const ChatList: React.FC<ChatListProps> = ({
     }
   };
 
+  
+  const createOrGetChat = async (user: any) => {
+    setError(null);
+    try {
+      const url = BASE_URL + "chat/createChat";
+      const res = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: "Bearer " + token,
+        },
+        body: JSON.stringify({
+          receiverId: user?._id,
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        console.log("chatId: ", data.chat._id);
+        // setAllChats([data.chat, ...allChats.filter((c) => c._id !== data.chat._id)]);
+        fetchChats();
+        setInput("");
+        setFetchedUsers([]);
+        
+      } else {
+        setError(data.message);
+      }
+    } catch (err) {
+      setError(String(err instanceof Error ? err.message : "Failed to create chat"));
+    }
+  };
+
   const fetchChats = async () => {
     const url = BASE_URL + "chat/fetchUserChats";
     const res = await fetch(url, {
@@ -256,7 +287,7 @@ const ChatList: React.FC<ChatListProps> = ({
                   <div
                     key={index}
                     className="p-3 hover:bg-gray-50 cursor-pointer border-b last:border-b-0 transition-colors"
-                    onClick={() => updateContacts(fetchedUser)}
+                    onClick={() => createOrGetChat(fetchedUser)}
                   >
                     <div className="flex items-center gap-3">
                       <img

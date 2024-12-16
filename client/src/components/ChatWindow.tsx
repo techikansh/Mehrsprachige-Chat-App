@@ -5,8 +5,7 @@ import { RootState } from "../store/store";
 import { useSelector } from "react-redux";
 import { io, Socket } from "socket.io-client";
 import EditGroupSettingsModal from "./EditGroupSettingsModal";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { storage } from "../utils/FirebaseConfig";
+import { MdDelete } from "react-icons/md";
 
 interface ChatWindowProps {
   contact: {
@@ -182,6 +181,44 @@ const ChatWindow = ({ contact, propChat, updateChat, setAllChats }: ChatWindowPr
     }
   };
 
+  const deleteMessage = async (messageId: string) => {
+    const url = BASE_URL + "chat/deleteMessage/" + messageId;
+    try {
+      const res = await fetch(url, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: "Bearer " + token,
+        },
+        body: JSON.stringify({
+          chatId,
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        // Update messages in the current chat
+        setMessages(data.messages || []);
+
+        // Update the all chats list
+        setAllChats((prevChats) => {
+          return prevChats.map((chat) => {
+            if (chat._id === chatId) {
+              return {
+                ...chat,
+                lastMessage: data.chat.lastMessage || null
+              };
+            }
+            return chat;
+          });
+        });
+      } else {
+        setError(data.message);
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err : new Error("Failed to delete message"));
+    }
+  };
+
   const autoResize = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const textarea = e.target;
     textarea.style.height = "auto"; // Reset height to auto to calculate new height
@@ -228,7 +265,9 @@ const ChatWindow = ({ contact, propChat, updateChat, setAllChats }: ChatWindowPr
       socket.emit("join_chat", chatId);
       socket.on("new_message", (data) => {
         const { message, chat } = data;
-        setMessages((prev) => [...prev, message]);
+        if (messages[messages.length - 1]._id !== message._id) {
+          setMessages((prev) => [...prev, message]);
+        }
       });
 
       return () => {
@@ -305,9 +344,16 @@ const ChatWindow = ({ contact, propChat, updateChat, setAllChats }: ChatWindowPr
                       isOwnMessage ? "bg-black text-white" : "bg-white"
                     } rounded-lg p-3 shadow group relative`}
                   >
+                    {isOwnMessage && (
+                      <MdDelete
+                        className="absolute top-1 right-1 text-gray-500 hover:text-white cursor-pointer invisible group-hover:visible"
+                        onClick={() => deleteMessage(msg._id)}
+                      />
+                    )}
                     <p className="whitespace-pre-wrap">{msg.translatedContent.text}</p>
+
                     {msg.originalContent.text !== msg.translatedContent.text && (
-                      <div className="absolute invisible group-hover:visible bg-gray-800 text-white p-2 rounded-md -top-8 left-0 whitespace-pre-wrap max-w-[100%] z-10 shadow-lg transition-opacity duration-200 ease-in-out">
+                      <div className="absolute invisible group-hover:visible bg-gray-800 text-white p-2 rounded-md top-14 left-0 whitespace-pre-wrap max-w-[100%] z-10 shadow-lg transition-opacity duration-200 ease-in-out">
                         {msg.originalContent.text}
                       </div>
                     )}
@@ -451,11 +497,19 @@ const ChatWindow = ({ contact, propChat, updateChat, setAllChats }: ChatWindowPr
                   <div
                     className={`max-w-[50%] ${
                       isOwnMessage ? "bg-black text-white" : "bg-white"
-                    } rounded-lg p-3 shadow group relative`}
+                    } rounded-lg p-3 shadow group relative group`}
                   >
+                    {isOwnMessage && (
+                      <MdDelete
+                        className="absolute top-1 right-1 text-gray-500 hover:text-white cursor-pointer invisible group-hover:visible"
+                        onClick={() => deleteMessage(msg._id)}
+                      />
+                    )}
+
                     <p className="whitespace-pre-wrap">{msg.translatedContent.text}</p>
+
                     {msg.originalContent.text !== msg.translatedContent.text && (
-                      <div className="absolute invisible group-hover:visible bg-gray-800 text-white p-2 rounded-md -top-8 left-0 whitespace-pre-wrap max-w-[100%] z-10 shadow-lg transition-opacity duration-200 ease-in-out">
+                      <div className="absolute invisible group-hover:visible bg-gray-800 text-white p-2 rounded-md top-14 left-0 whitespace-pre-wrap max-w-[100%] z-10 shadow-lg transition-opacity duration-200 ease-in-out">
                         {msg.originalContent.text}
                       </div>
                     )}
