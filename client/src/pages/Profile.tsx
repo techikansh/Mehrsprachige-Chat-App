@@ -1,25 +1,101 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Header from "../components/Header";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/store";
 
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { storage } from "../utils/FirebaseConfig";
+import { BASE_URL } from "../utils/constants";
+import { setUser } from "../store/userSlice";
 const Profile = () => {
-  const { id, firstName, lastName, email, prefferedLanguage, avatar } =
-    useSelector((state: RootState) => state.user);
+  const { id, firstName, lastName, email, prefferedLanguage, avatar, token } = useSelector(
+    (state: RootState) => state.user
+  );
+  const dispatch = useDispatch();
 
+  const fileRef = useRef<HTMLInputElement>(null);
   const [firstNameState, setFirstNameState] = useState(firstName || "");
   const [lastNameState, setLastNameState] = useState(lastName || "");
   const [emailState, setEmailState] = useState(email || "");
   const [passwordState, setPasswordState] = useState("");
   const [prefferedLanguageState, setPrefferedLanguageState] = useState(prefferedLanguage || "de");
+  const [avatarState, setAvatarState] = useState(avatar || "");
+  const [avatarFile, setAvatarFile] = useState<File | null>(null);
 
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const [isUploading, setIsUploading] = useState(false);
+  const [uploadError, setUploadError] = useState<string | null>(null);
+
+  const [error, setError] = useState<string | null>(null);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(firstNameState, lastNameState, emailState, passwordState, prefferedLanguageState);
+    console.log(
+      firstNameState,
+      lastNameState,
+      emailState,
+      passwordState,
+      prefferedLanguageState,
+      avatarState
+    );
+    const url = BASE_URL + "user/updateUser";
+    try {
+      const res = await fetch(url, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          firstName: firstNameState,
+          lastName: lastNameState,
+          email: emailState,
+          password: passwordState,
+          prefferedLanguage: prefferedLanguageState,
+          avatar: avatarState,
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        dispatch(setUser({ ...data.user, id: data.user._id, token: token }));
+      } else {
+        setError(data.message);
+      }
+    } catch (err) {
+      console.log(err);
+      setError(err instanceof Error ? err.message : "Failed to update user");
+    }
+  };
+
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setUploadError(null);
+      setIsUploading(true);
+
+      try {
+        if (file.size > 2 * 1024 * 1024) {
+          throw new Error("File size must be less than 2MB");
+        }
+
+        if (!file.type.startsWith("image/")) {
+          throw new Error("Only image files are allowed");
+        }
+        const imageRef = ref(storage, `Echtzeit-Chat-App-Thesis/${file.name}`);
+
+        const snapshot = await uploadBytes(imageRef, file);
+        const url = await getDownloadURL(snapshot.ref);
+        setAvatarState(url);
+      } catch (error) {
+        setUploadError(error instanceof Error ? error.message : "Failed to upload image");
+        console.error("Upload error:", error);
+      } finally {
+        setIsUploading(false);
+      }
+    }
   };
 
   return (
@@ -33,6 +109,32 @@ const Profile = () => {
             className="flex flex-col items-center justify-center gap-2 w-full"
             onSubmit={handleSubmit}
           >
+            <div className="flex flex-col items-center justify-center gap-2 w-full">
+              <input
+                type="file"
+                className="hidden"
+                ref={fileRef}
+                accept="image/*"
+                onChange={handleFileChange}
+              />
+              <div className="relative">
+                <img
+                  src={avatarState || ""}
+                  alt="avatar"
+                  onClick={() => fileRef.current?.click()}
+                  className={`w-24 h-24 rounded-full object-cover border-2 border-white shadow-sm cursor-pointer ${
+                    isUploading ? "opacity-50" : ""
+                  }`}
+                />
+                {isUploading && (
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
+                  </div>
+                )}
+              </div>
+              {uploadError && <div className="text-red-500 text-sm text-center">{uploadError}</div>}
+            </div>
+
             <div className="flex flex-col items-start justify-start gap-1 w-full">
               <div className="text-lg font-medium pl-1">First Name</div>
               <input
@@ -120,10 +222,7 @@ const Profile = () => {
               </select>
             </div>
 
-            <button
-              type="submit"
-              className="bg-black text-white p-2 mt-4 rounded-md w-full"
-            >
+            <button type="submit" className="bg-black text-white p-2 mt-4 rounded-md w-full">
               Update
             </button>
           </form>

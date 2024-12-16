@@ -25,6 +25,7 @@ const ChatList: React.FC<ChatListProps> = ({
   const [allContacts, setAllContacts] = useState<any[]>([]);
   const [socket, setSocket] = useState<Socket | null>(null);
   const [openModal, setOpenModal] = useState(false);
+  const [chatSearchInput, setChatSearchInput] = useState<string>("");
 
   const {
     id,
@@ -81,11 +82,8 @@ const ChatList: React.FC<ChatListProps> = ({
         setAllChats((prevChats) =>
           prevChats.map((chat) => ({
             ...chat,
-            participants: chat.participants.map(
-              (participant: { _id: string; status?: string }) =>
-                participant._id === userId
-                  ? { ...participant, status }
-                  : participant
+            participants: chat.participants.map((participant: { _id: string; status?: string }) =>
+              participant._id === userId ? { ...participant, status } : participant
             ),
           }))
         );
@@ -199,13 +197,25 @@ const ChatList: React.FC<ChatListProps> = ({
     fetchChats();
   }, []);
 
+  useEffect(() => {
+    if (chatSearchInput.length >= 3) {
+      const filteredChats = allChats.filter((chat) => {
+        return chat.participants.some(
+          (participant: any) =>
+            participant.firstName.toLowerCase().includes(chatSearchInput.toLowerCase()) ||
+            participant.lastName.toLowerCase().includes(chatSearchInput.toLowerCase())
+        );
+      });
+      setAllChats(filteredChats);
+    } else if (chatSearchInput.length === 0) {
+      fetchChats();
+    }
+  }, [chatSearchInput]);
+
   return (
     <div className="h-full flex flex-col">
       {openModal && (
-        <GroupChatModal
-          setOpenModal={setOpenModal}
-          setSelectedChat={setSelectedChat}
-        />
+        <GroupChatModal setOpenModal={setOpenModal} setSelectedChat={setSelectedChat} />
       )}
 
       {/* Header Section */}
@@ -226,7 +236,7 @@ const ChatList: React.FC<ChatListProps> = ({
                 className="w-full px-4 py-2 rounded-full border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="Search contacts..."
+                placeholder="Add contacts..."
               />
               {input && (
                 <MdCancel
@@ -258,9 +268,7 @@ const ChatList: React.FC<ChatListProps> = ({
                         <span className="font-medium text-gray-900">
                           {fetchedUser.firstName} {fetchedUser.lastName}
                         </span>
-                        <span className="text-sm text-gray-500">
-                          {fetchedUser.status}
-                        </span>
+                        <span className="text-sm text-gray-500">{fetchedUser.status}</span>
                       </div>
                     </div>
                   </div>
@@ -271,25 +279,45 @@ const ChatList: React.FC<ChatListProps> = ({
         </div>
       </div>
 
+      {/* Chats Search Bar */}
+      <div className="relative w-full group">
+        <div className="w-[80%] flex justify-center items-center mx-auto gap-2 rounded-b-xl pb-2 px-4 opacity-0 group-hover:opacity-100 group-hover:mb-10 transition-opacity duration-200">
+          <div className="p-2 outline-none border border-gray-200 w-full rounded-b-lg flex justify-between items-center bg-white">
+            <input
+              type="text"
+              placeholder="Search in conversations..."
+              className=" outline-none  w-full"
+              value={chatSearchInput}
+              onChange={(e) => setChatSearchInput(e.target.value)}
+            />
+
+            {chatSearchInput && (
+              <MdCancel
+                className=" text-gray-400 hover:text-gray-600 cursor-pointer transition-colors"
+                onClick={() => {
+                  setChatSearchInput("");
+                }}
+              />
+            )}
+          </div>
+        </div>
+      </div>
+
       {/* Error Message */}
       {error && (
         <div className="px-4 mt-4">
-          <div className="bg-red-50 text-red-600 px-4 py-2 rounded-md text-sm">
-            {error}
-          </div>
+          <div className="bg-red-50 text-red-600 px-4 py-2 rounded-md text-sm">{error}</div>
         </div>
       )}
 
       {/* Chats List */}
-      <div className="flex-1 overflow-y-auto px-4 py-4">
+      <div className="flex-1 overflow-y-auto px-4 py-4 -mt-10 group-hover:mt-0 transition-all duration-200">
         <div className="bg-white rounded-xl shadow-sm">
           {allChats.length > 0 &&
             allChats.map((chat) => {
               // console.log(chat)
 
-              const receiver = chat.participants.filter(
-                (p: any) => p.email != email
-              )[0];
+              const receiver = chat.participants.filter((p: any) => p.email != email)[0];
 
               // Group Chats
               if (chat.chatType === "group") {
@@ -312,10 +340,8 @@ const ChatList: React.FC<ChatListProps> = ({
                           />
                         </div>
                         <div className="flex flex-col">
-                          <span className="font-medium text-gray-900">
-                            {chat.groupName}
-                          </span>
-                          
+                          <span className="font-medium text-gray-900">{chat.groupName}</span>
+
                           {chat?.lastMessage && (
                             <span
                               className={`${
@@ -328,14 +354,10 @@ const ChatList: React.FC<ChatListProps> = ({
                                 ? "You: "
                                 : `${
                                     chat?.participants.find(
-                                      (p: any) =>
-                                        p._id === chat?.lastMessage?.sender
+                                      (p: any) => p._id === chat?.lastMessage?.sender
                                     )?.firstName || "Unknown"
                                   }: `}
-                              {chat?.lastMessage?.translatedContent?.text.slice(
-                                0,
-                                40
-                              )}
+                              {chat?.lastMessage?.translatedContent?.text.slice(0, 40)}
                               ...
                             </span>
                           )}
@@ -344,9 +366,7 @@ const ChatList: React.FC<ChatListProps> = ({
 
                       {chat?.lastMessage && (
                         <span className="text-xs text-gray-400">
-                          {new Date(
-                            chat?.lastMessage?.createdAt
-                          ).toLocaleTimeString([], {
+                          {new Date(chat?.lastMessage?.createdAt).toLocaleTimeString([], {
                             hour: "2-digit",
                             minute: "2-digit",
                           })}
@@ -392,13 +412,8 @@ const ChatList: React.FC<ChatListProps> = ({
                                 : "text-xs text-gray-900 font-bold"
                             }`}
                           >
-                            {id === chat?.lastMessage?.sender
-                              ? "You: "
-                              : receiver.firstName + ": "}
-                            {chat?.lastMessage?.translatedContent?.text.slice(
-                              0,
-                              40
-                            )}
+                            {id === chat?.lastMessage?.sender ? "You: " : receiver.firstName + ": "}
+                            {chat?.lastMessage?.translatedContent?.text.slice(0, 40)}
                             ...
                           </span>
                         )}
@@ -406,9 +421,7 @@ const ChatList: React.FC<ChatListProps> = ({
                     </div>
                     {chat?.lastMessage && (
                       <span className="text-xs text-gray-400">
-                        {new Date(
-                          chat?.lastMessage?.createdAt
-                        ).toLocaleTimeString([], {
+                        {new Date(chat?.lastMessage?.createdAt).toLocaleTimeString([], {
                           hour: "2-digit",
                           minute: "2-digit",
                         })}

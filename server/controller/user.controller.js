@@ -1,34 +1,30 @@
 import User from "../models/User.model.js";
 
 export async function updateUser(req, res) {
-  const { userId, email } = req.user;
+  const { userId } = req.user;
   const {
     firstName,
     lastName,
-    email: newEmail,
+    email,
     prefferedLanguage,
     avatar,
-    status,
-    lastSeen,
-    contacts,
+    password
   } = req.body;
 
   try {
+    // Create update object with only provided fields
+    const updateObject = {};
+    if (firstName) updateObject.firstName = firstName;
+    if (lastName) updateObject.lastName = lastName;
+    if (email) updateObject.email = email;
+    if (prefferedLanguage) updateObject.prefferedLanguage = prefferedLanguage;
+    if (avatar) updateObject.avatar = avatar;
+    if (password) updateObject.password = password;
+
     const user = await User.findByIdAndUpdate(
       userId,
-      {
-        firstName,
-        lastName,
-        email: newEmail,
-        prefferedLanguage,
-        avatar,
-        status,
-        lastSeen,
-        contacts,
-      },
-      {
-        new: true,
-      }
+      updateObject,
+      { new: true }
     ).populate("contacts", "-password");
 
     if (!user) {
@@ -38,7 +34,7 @@ export async function updateUser(req, res) {
       });
     }
 
-    const { password, ...userWithoutPassword } = user.toObject();
+    const { password: _, ...userWithoutPassword } = user.toObject();
     return res.status(200).json({
       success: true,
       message: "User updated",
@@ -46,14 +42,11 @@ export async function updateUser(req, res) {
     });
   } catch (error) {
     console.log(error);
-    return res
-      .status(500)
-      .json({ success: false, message: "Internal server error!" });
+    return res.status(500).json({ success: false, message: "Internal server error!" });
   }
 }
 
-
-export async function fetchUser (req, res) {
+export async function fetchUser(req, res) {
   const { userId } = req.user;
   try {
     const user = await User.findById(userId).populate("contacts", "-password");
@@ -76,7 +69,7 @@ export async function fetchUser (req, res) {
   }
 }
 
-export async function fetchContacts (req, res) {
+export async function fetchContacts(req, res) {
   const { userId } = req.user;
   try {
     const user = await User.findById(userId).populate("contacts", "-password");
@@ -88,7 +81,7 @@ export async function fetchContacts (req, res) {
     }
     return res.status(200).json({
       success: true,
-      contacts:user.contacts,
+      contacts: user.contacts,
     });
   } catch (error) {
     console.log(error);
