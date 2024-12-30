@@ -240,7 +240,7 @@ export async function deleteMessage(req, res) {
       .populate("lastMessage", "sender receiver translatedContent.text createdAt readBy");
 
     // Emit the new message to all users in the chat
-    req.app.get("io").to(chatId).emit("new_message", { message, chat: updatedChat });
+    req.app.get("io").to(chatId).emit("new_message", { message:null, chat: updatedChat });
 
     return res.status(200).json({
       success: true,

@@ -265,8 +265,15 @@ const ChatWindow = ({ contact, propChat, updateChat, setAllChats }: ChatWindowPr
       socket.emit("join_chat", chatId);
       socket.on("new_message", (data) => {
         const { message, chat } = data;
-        if (messages[messages.length - 1]._id !== message._id) {
+        // if (messages[messages.length - 1]._id != message._id) {
+        if (message) {
+          console.log('message is not null')
           setMessages((prev) => [...prev, message]);
+        }
+        if (!message) {
+          console.log('message is null')
+          //remove the last message
+          setMessages((prev) => prev.slice(0, -1));
         }
       });
 

@@ -1,0 +1,1202 @@
+[
+    {
+        "id": 1,
+        "text": "Wiederaufnahme der Sitzungsperiode",
+        "target_language": "EN",
+        "reference": "Resumption of the session"
+    },
+    {
+        "id": 2,
+        "text": "Ich erkläre die am Freitag, dem 17. Dezember unterbrochene Sitzungsperiode des Europäischen Parlaments für wiederaufgenommen, wünsche Ihnen nochmals alles Gute zum Jahreswechsel und hoffe, daß Sie schöne Ferien hatten.",
+        "target_language": "EN",
+        "reference": "I declare resumed the session of the European Parliament adjourned on Friday 17 December 1999, and I would like once again to wish you a happy new year in the hope that you enjoyed a pleasant festive period."
+    },
+    {
+        "id": 3,
+        "text": "Wie Sie feststellen konnten, ist der gefürchtete \"Millenium-Bug \" nicht eingetreten. Doch sind Bürger einiger unserer Mitgliedstaaten Opfer von schrecklichen Naturkatastrophen geworden.",
+        "target_language": "EN",
+        "reference": "Although, as you will have seen, the dreaded 'millennium bug' failed to materialise, still the people in a number of countries suffered a series of natural disasters that truly were dreadful."
+    },
+    {
+        "id": 4,
+        "text": "Im Parlament besteht der Wunsch nach einer Aussprache im Verlauf dieser Sitzungsperiode in den nächsten Tagen.",
+        "target_language": "EN",
+        "reference": "You have requested a debate on this subject in the course of the next few days, during this part-session."
+    },
+    {
+        "id": 5,
+        "text": "Heute möchte ich Sie bitten - das ist auch der Wunsch einiger Kolleginnen und Kollegen -, allen Opfern der Stürme, insbesondere in den verschiedenen Ländern der Europäischen Union, in einer Schweigeminute zu gedenken.",
+        "target_language": "EN",
+        "reference": "In the meantime, I should like to observe a minute' s silence, as a number of Members have requested, on behalf of all the victims concerned, particularly those of the terrible storms, in the various countries of the European Union."
+    },
+    {
+        "id": 6,
+        "text": "Ich bitte Sie, sich zu einer Schweigeminute zu erheben.",
+        "target_language": "EN",
+        "reference": "Please rise, then, for this minute' s silence."
+    },
+    {
+        "id": 7,
+        "text": "(Das Parlament erhebt sich zu einer Schweigeminute.)",
+        "target_language": "EN",
+        "reference": "(The House rose and observed a minute' s silence)"
+    },
+    {
+        "id": 8,
+        "text": "Frau Präsidentin, zur Geschäftsordnung.",
+        "target_language": "EN",
+        "reference": "Madam President, on a point of order."
+    },
+    {
+        "id": 9,
+        "text": "Wie Sie sicher aus der Presse und dem Fernsehen wissen, gab es in Sri Lanka mehrere Bombenexplosionen mit zahlreichen Toten.",
+        "target_language": "EN",
+        "reference": "You will be aware from the press and television that there have been a number of bomb explosions and killings in Sri Lanka."
+    },
+    {
+        "id": 10,
+        "text": "Zu den Attentatsopfern, die es in jüngster Zeit in Sri Lanka zu beklagen gab, zählt auch Herr Kumar Ponnambalam, der dem Europäischen Parlament erst vor wenigen Monaten einen Besuch abgestattet hatte.",
+        "target_language": "EN",
+        "reference": "One of the people assassinated very recently in Sri Lanka was Mr Kumar Ponnambalam, who had visited the European Parliament just a few months ago."
+    },
+    {
+        "id": 11,
+        "text": "Wäre es angemessen, wenn Sie, Frau Präsidentin, der Präsidentin von Sri Lanka in einem Schreiben das Bedauern des Parlaments zum gewaltsamen Tod von Herrn Ponnambalam und anderen Bürgern von Sri Lanka übermitteln und sie auffordern würden, alles in ihrem Kräften stehende zu tun, um nach einer friedlichen Lösung dieser sehr schwierigen Situation zu suchen?",
+        "target_language": "EN",
+        "reference": "Would it be appropriate for you, Madam President, to write a letter to the Sri Lankan President expressing Parliament's regret at his and the other violent deaths in Sri Lanka and urging her to do everything she possibly can to seek a peaceful reconciliation to a very difficult situation?"
+    },
+    {
+        "id": 12,
+        "text": "Ja, Herr Evans, ich denke, daß eine derartige Initiative durchaus angebracht ist.",
+        "target_language": "EN",
+        "reference": "Yes, Mr Evans, I feel an initiative of the type you have just suggested would be entirely appropriate."
+    },
+    {
+        "id": 13,
+        "text": "Wenn das Haus damit einverstanden ist, werde ich dem Vorschlag von Herrn Evans folgen.",
+        "target_language": "EN",
+        "reference": "If the House agrees, I shall do as Mr Evans has suggested."
+    },
+    {
+        "id": 14,
+        "text": "Frau Präsidentin, zur Geschäftsordnung.",
+        "target_language": "EN",
+        "reference": "Madam President, on a point of order."
+    },
+    {
+        "id": 15,
+        "text": "Könnten Sie mir eine Auskunft zu Artikel 143 im Zusammenhang mit der Unzulässigkeit geben?",
+        "target_language": "EN",
+        "reference": "I would like your advice about Rule 143 concerning inadmissibility."
+    },
+    {
+        "id": 16,
+        "text": "Meine Frage betrifft eine Angelegenheit, die am Donnerstag zur Sprache kommen wird und auf die ich dann erneut verweisen werde.",
+        "target_language": "EN",
+        "reference": "My question relates to something that will come up on Thursday and which I will then raise again."
+    },
+    {
+        "id": 17,
+        "text": "Das Parlament wird sich am Donnerstag mit dem Cunha-Bericht über mehrjährige Ausrichtungsprogramme befassen, der in Absatz 6 vorschlägt, daß Länder, die ihr Soll zur Flottenverkleinerung nicht erfüllen, jährlich mit einer Art Quotenstrafe belegt werden sollen.",
+        "target_language": "EN",
+        "reference": "The Cunha report on multiannual guidance programmes comes before Parliament on Thursday and contains a proposal in paragraph 6 that a form of quota penalties should be introduced for countries which fail to meet their fleet reduction targets annually."
+    },
+    {
+        "id": 18,
+        "text": "Und zwar sollen derartige Strafen trotz des Grundsatzes der relativen Stabilität verhängt werden.",
+        "target_language": "EN",
+        "reference": "It says that this should be done despite the principle of relative stability."
+    },
+    {
+        "id": 19,
+        "text": "Ich meine, daß der Grundsatz der relativen Stabilität einen elementaren Rechtsgrundsatz der gemeinsamen Fischereipolitik darstellt und ein Vorschlag, diesen zu unterlaufen, rechtlich unzulässig wäre.",
+        "target_language": "EN",
+        "reference": "I believe that the principle of relative stability is a fundamental legal principle of the common fisheries policy and a proposal to subvert it would be legally inadmissible."
+    },
+    {
+        "id": 20,
+        "text": "Ich möchte wissen, ob es möglich ist, einen Einwand gegen ein Dokument zu erheben, bei dem es sich lediglich um einen Bericht und keinen Legislativvorschlag handelt, und ob ich befugt bin, dies am Donnerstag zu tun.",
+        "target_language": "EN",
+        "reference": "I want to know whether one can raise an objection of that kind to what is merely a report, not a legislative proposal, and whether that is something I can competently do on Thursday."
+    },
+    {
+        "id": 21,
+        "text": "Genau dann können Sie, wenn Sie wollen, diese Frage ansprechen, d. h. am Donnerstag zu Beginn der Aussprache über den Bericht.",
+        "target_language": "EN",
+        "reference": "That is precisely the time when you may, if you wish, raise this question, i.e. on Thursday prior to the start of the presentation of the report."
+    },
+    {
+        "id": 22,
+        "text": "Frau Präsidentin! Die erste diesjährige Tagung des Europäischen Parlaments fällt leider damit zusammen, daß in den Vereinigten Staaten, in Texas, für Donnerstag dieser Woche die Hinrichtung eines zum Tode verurteilten 34jährigen jungen Mannes namens Hicks festgelegt worden ist.",
+        "target_language": "EN",
+        "reference": "Madam President, coinciding with this year' s first part-session of the European Parliament, a date has been set, unfortunately for next Thursday, in Texas in America, for the execution of a young 34 year-old man who has been sentenced to death. We shall call him Mr Hicks."
+    },
+    {
+        "id": 23,
+        "text": "Auf Wunsch eines französischen Mitglieds, Herrn Zimeray, wurde bereits eine Petition eingereicht, die von vielen, auch von mir selbst, unterzeichnet worden ist.",
+        "target_language": "EN",
+        "reference": "At the request of a French Member, Mr Zimeray, a petition has already been presented, which many people signed, including myself."
+    },
+    {
+        "id": 24,
+        "text": "Gemäß der vom Europäischen Parlament und von der gesamten Europäischen Union nunmehr ständig vertretenen Linie möchte ich Sie jedoch bitten, den ganzen Einfluß Ihres Amtes und der Institution, die Sie vertreten, bei dem Präsidentschaftskandidaten und Gouverneur von Texas, George W. Bush, der zur Aussetzung der Vollstreckung des Todesurteils und zur Begnadigung des Verurteilten befugt ist, geltend zu machen.",
+        "target_language": "EN",
+        "reference": "However, I would ask you, in accordance with the line which is now constantly followed by the European Parliament and by the whole of the European Community, to make representations, using the weight of your prestigious office and the institution you represent, to the President and to the Governor of Texas, Mr Bush, who has the power to order a stay of execution and to reprieve the condemned person."
+    },
+    {
+        "id": 25,
+        "text": "All dies entspricht den Grundsätzen, die wir stets verteidigt haben.",
+        "target_language": "EN",
+        "reference": "This is all in accordance with the principles that we have always upheld."
+    },
+    {
+        "id": 26,
+        "text": "Vielen Dank, Herr Segni, das will ich gerne tun.",
+        "target_language": "EN",
+        "reference": "Thank you, Mr Segni, I shall do so gladly."
+    },
+    {
+        "id": 27,
+        "text": "Das ist ganz im Sinne der Position, die wir als Parlament immer vertreten haben.",
+        "target_language": "EN",
+        "reference": "Indeed, it is quite in keeping with the positions this House has always adopted."
+    },
+    {
+        "id": 28,
+        "text": "Frau Präsidentin! Ich möchte Sie auf einen Fall aufmerksam machen, mit dem sich dieses Parlament immer wieder befaßt hat.",
+        "target_language": "EN",
+        "reference": "Madam President, I should like to draw your attention to a case in which this Parliament has consistently shown an interest."
+    },
+    {
+        "id": 29,
+        "text": "Das ist der Fall von Alexander Nikitin.",
+        "target_language": "EN",
+        "reference": "It is the case of Alexander Nikitin."
+    },
+    {
+        "id": 30,
+        "text": "Wir freuen uns hier alle, daß das Gericht ihn freigesprochen und deutlich gemacht hat, daß auch in Rußland der Zugang zu Umweltinformationen konstitutionelles Recht ist.",
+        "target_language": "EN",
+        "reference": "All of us here are pleased that the courts have acquitted him and made it clear that in Russia, too, access to environmental information is a constitutional right."
+    },
+    {
+        "id": 31,
+        "text": "Nun ist es aber so, daß er wieder angeklagt werden soll, weil der Staatsanwalt in Berufung geht.",
+        "target_language": "EN",
+        "reference": "Now, however, he is to go before the courts once more because the public prosecutor is appealing."
+    },
+    {
+        "id": 32,
+        "text": "Wir wissen und wir haben es in wirklich sehr vielen Entschließungen festgestellt - gerade während der letzten Plenartagung des vergangenen Jahres-, daß dies nicht nur ein juristischer Fall ist und daß es falsch ist, Alexander Nikitin Kriminalität und Verrat vorzuwerfen, weil wir als Betroffene von seinen Ergebnissen einen Nutzen haben.",
+        "target_language": "EN",
+        "reference": "We know, and we have stated as much in very many resolutions indeed, including specifically during the last plenary part-session of last year, that this is not solely a legal case and that it is wrong for Alexander Nikitin to be accused of criminal activity and treason because of our involvement as the beneficiaries of his findings."
+    },
+    {
+        "id": 33,
+        "text": "Diese Ergebnisse sind die Grundlage für die europäischen Programme zum Schutz der Barentsee, und deswegen bitte ich Sie, einen Briefentwurf, der Ihnen die wichtigsten Fakten schildert, zu prüfen und im Sinne der Beschlüsse des Parlaments in Rußland diese Position deutlich zu machen.",
+        "target_language": "EN",
+        "reference": "These findings form the basis of the European programmes to protect the Barents Sea, and that is why I would ask you to examine a draft letter setting out the most important facts and to make Parliament's position, as expressed in the resolutions which it has adopted, clear as far as Russia is concerned."
+    },
+    {
+        "id": 34,
+        "text": "Frau Schroedter, ich bin gerne bereit, die damit zusammenhängenden Fakten zu prüfen, wenn mir Ihr Brief vorliegt.",
+        "target_language": "EN",
+        "reference": "Yes, Mrs Schroedter, I shall be pleased to look into the facts of this case when I have received your letter."
+    },
+    {
+        "id": 35,
+        "text": "Frau Präsidentin, zunächst besten Dank dafür, daß Sie Wort gehalten haben und nun in der ersten Sitzungsperiode des neuen Jahres das Angebot an Fernsehprogrammen in unseren Büros tatsächlich enorm erweitert ist.",
+        "target_language": "EN",
+        "reference": "Madam President, I would firstly like to compliment you on the fact that you have kept your word and that, during this first part-session of the new year, the number of television channels in our offices has indeed increased considerably."
+    },
+    {
+        "id": 36,
+        "text": "Dennoch, Frau Präsidentin, wurde meinem Wunsch nicht entsprochen.",
+        "target_language": "EN",
+        "reference": "But, Madam President, my personal request has not been met."
+    },
+    {
+        "id": 37,
+        "text": "Zwar können wir jetzt zwei finnische und einen portugiesischen, nach wie vor aber keinen niederländischen Sender empfangen. Ich hatte Sie aber um ein niederländisches Programm gebeten, denn auch wir Niederländer möchten die Nachrichten verfolgen, wenn wir jeden Monat hierher in die Verbannung geschickt werden.",
+        "target_language": "EN",
+        "reference": "Although there are now two Finnish channels and one Portuguese one, there is still no Dutch channel, which is what I had requested because Dutch people here like to be able to follow the news too when we are sent to this place of exile every month."
+    },
+    {
+        "id": 38,
+        "text": "Deshalb möchte ich Sie nochmals ersuchen, dafür Sorge zu tragen, daß auch ein niederländischer Sender eingespeist wird.",
+        "target_language": "EN",
+        "reference": "I would therefore once more ask you to ensure that we get a Dutch channel as well."
+    },
+    {
+        "id": 39,
+        "text": "Frau Plooij-van Gorsel, ich kann Ihnen mitteilen, daß dieser Punkt am Mittwoch auf der Tagesordnung der Quästoren steht.",
+        "target_language": "EN",
+        "reference": "Mrs Plooij-van Gorsel, I can tell you that this matter is on the agenda for the Quaestors' meeting on Wednesday."
+    },
+    {
+        "id": 40,
+        "text": "Ich hoffe, daß dort in Ihrem Sinne entschieden wird.",
+        "target_language": "EN",
+        "reference": "It will, I hope, be examined in a positive light."
+    },
+    {
+        "id": 41,
+        "text": "Frau Präsidentin, können Sie mir sagen, warum sich dieses Parlament nicht an die Arbeitsschutzregelungen hält, die es selbst verabschiedet hat?",
+        "target_language": "EN",
+        "reference": "Madam President, can you tell me why this Parliament does not adhere to the health and safety legislation that it actually passes?"
+    },
+    {
+        "id": 42,
+        "text": "Weshalb wurde die Luftqualität in diesem Gebäude seit unserer Wahl nicht ein einziges Mal überprüft?",
+        "target_language": "EN",
+        "reference": "Why has no air quality test been done on this particular building since we were elected?"
+    },
+    {
+        "id": 43,
+        "text": "Weshalb ist der Arbeitsschutzausschuß seit 1998 nicht ein einziges Mal zusammengetreten?",
+        "target_language": "EN",
+        "reference": "Why has there been no Health and Safety Committee meeting since 1998?"
+    },
+    {
+        "id": 44,
+        "text": "Warum hat weder im Brüsseler noch im Straßburger Parlamentsgebäude eine Brandschutzübung stattgefunden?",
+        "target_language": "EN",
+        "reference": "Why has there been no fire drill, either in the Brussels Parliament buildings or the Strasbourg Parliament buildings?"
+    },
+    {
+        "id": 45,
+        "text": "Warum finden keine Brandschutzbelehrungen statt?",
+        "target_language": "EN",
+        "reference": "Why are there no fire instructions?"
+    },
+    {
+        "id": 46,
+        "text": "Warum wurde nach meinem Unfall nichts unternommen, um die Treppen sicherer zu machen?",
+        "target_language": "EN",
+        "reference": "Why have the staircases not been improved since my accident?"
+    },
+    {
+        "id": 47,
+        "text": "Warum wird in den Nichtraucherzonen das Rauchverbot nicht durchgesetzt?",
+        "target_language": "EN",
+        "reference": "Why are no-smoking areas not enforced?"
+    },
+    {
+        "id": 48,
+        "text": "Es ist eine Schande, daß wir Regeln verabschieden, an die wir uns dann selbst nicht halten.",
+        "target_language": "EN",
+        "reference": "It seems absolutely disgraceful that we pass legislation and do not adhere to it ourselves."
+    },
+    {
+        "id": 49,
+        "text": "Frau Lynne, Sie haben völlig recht, und ich werde prüfen, ob all dies wirklich so ist.",
+        "target_language": "EN",
+        "reference": "Mrs Lynne, you are quite right and I shall check whether this has actually not been done."
+    },
+    {
+        "id": 50,
+        "text": "Ich werde die Frage auch den Quästoren unterbreiten. Ich bin mir sicher, daß diese großen Wert darauf legen, daß wir die Rechtsvorschriften, die wir verabschieden, auch selbst einhalten.",
+        "target_language": "EN",
+        "reference": "I shall also refer the matter to the College of Quaestors, and I am certain that they will be keen to ensure that we comply with the regulations we ourselves vote on."
+    },
+    {
+        "id": 51,
+        "text": "Frau Präsidentin! Frau Díez González und ich hatten einige Anfragen zu bestimmten, in einer spanischen Zeitung wiedergegebenen Stellungnahmen der Vizepräsidentin, Frau de Palacio, gestellt.",
+        "target_language": "EN",
+        "reference": "Madam President, Mrs Díez González and I had tabled questions on certain opinions of the Vice-President, Mrs de Palacio, which appeared in a Spanish newspaper."
+    },
+    {
+        "id": 52,
+        "text": "Die zuständigen Dienste haben sie nicht in die Tagesordnung aufgenommen, da sie der Meinung waren, sie seien schon in einer vorangegangenen Sitzung beantwortet worden.",
+        "target_language": "EN",
+        "reference": "The competent services have not included them in the agenda on the grounds that they had been answered in a previous part-session."
+    },
+    {
+        "id": 53,
+        "text": "Ich bitte, diese Entscheidung zu überdenken, weil das nicht der Fall ist.",
+        "target_language": "EN",
+        "reference": "I would ask that they reconsider, since this is not the case."
+    },
+    {
+        "id": 54,
+        "text": "Die früher beantworteten Anfragen bezogen sich auf das Auftreten von Frau de Palacio in einer bestimmten Angelegenheit, nicht auf die am 18. November des vergangenen Jahres in der Tageszeitung ABC erschienenen Erklärungen.",
+        "target_language": "EN",
+        "reference": "The questions answered previously referred to Mrs de Palacio' s intervention, on another occasion, and not to these comments which appeared in the ABC newspaper on 18 November."
+    },
+    {
+        "id": 55,
+        "text": "Lieber Kollege, wir werden das prüfen.",
+        "target_language": "EN",
+        "reference": "Mr Berenguer Fuster, we shall check all this."
+    },
+    {
+        "id": 56,
+        "text": "Ich muß Ihnen aber sagen, daß ich die Lage im Moment für etwas verworren halte.",
+        "target_language": "EN",
+        "reference": "I admit that, at present, the matter seems to be somewhat confused."
+    },
+    {
+        "id": 57,
+        "text": "Wir werden das aber sehr genau prüfen, damit alles seine Richtigkeit hat.",
+        "target_language": "EN",
+        "reference": "We shall therefore look into it properly to ensure that everything is as it should be."
+    },
+    {
+        "id": 58,
+        "text": "Frau Präsidentin, ich wüßte gern, ob das Parlament in dieser Woche ein deutliches Signal unserer Unzufriedenheit bezüglich der heutigen Entscheidung, mit der eine Verlängerung des Waffenembargos gegen Indonesien abgelehnt wird, aussenden wird, zumal sich die große Mehrheit in diesem Parlament in der Vergangenheit für das Waffenembargo gegen Indonesien ausgesprochen hat.",
+        "target_language": "EN",
+        "reference": "Madam President, I should like to know if there will be a clear message going out from Parliament this week about our discontent over today's decision refusing to renew the arms embargo on Indonesia, considering that the vast majority in this Parliament have endorsed the arms embargo in Indonesia in the past?"
+    },
+    {
+        "id": 59,
+        "text": "Die heutige Entscheidung gegen eine Verlängerung des Embargos birgt angesichts der dortigen Lage eine sehr große Gefahr.",
+        "target_language": "EN",
+        "reference": "Today's decision not to renew the embargo is extremely dangerous considering the situation there."
+    },
+    {
+        "id": 60,
+        "text": "Das Parlament sollte, da dies dem Wunsch der großen Mehrheit entspricht, eine entsprechende Botschaft senden.",
+        "target_language": "EN",
+        "reference": "So Parliament should send a message, since that is the wish of the vast majority."
+    },
+    {
+        "id": 61,
+        "text": "Die Ablehnung einer Verlängerung des Embargos seitens der EU-Mitgliedstaaten ist unverantwortlich.",
+        "target_language": "EN",
+        "reference": "It is irresponsible of EU Member States to refuse to renew the embargo."
+    },
+    {
+        "id": 62,
+        "text": "Wie bereits festgestellt wurde, ist die Lage in Indonesien äußerst instabil.",
+        "target_language": "EN",
+        "reference": "As people have said, the situation there is extremely volatile."
+    },
+    {
+        "id": 63,
+        "text": "Es besteht sogar die Gefahr eines Militärputsches.",
+        "target_language": "EN",
+        "reference": "There is, in fact, a risk of a military coup in the future."
+    },
+    {
+        "id": 64,
+        "text": "Wir wissen nicht, was passiert.",
+        "target_language": "EN",
+        "reference": "We do not know what is happening."
+    },
+    {
+        "id": 65,
+        "text": "Weshalb also sollten Waffenhersteller in der EU auf Kosten unschuldiger Menschen Profite einstreichen?",
+        "target_language": "EN",
+        "reference": "So why should EU arms producers profit at the expense of innocent people?"
+    },
+    {
+        "id": 66,
+        "text": "Dieser Punkt ist bisher nicht für die Dringlichkeitsdebatte am Donnerstag vorgesehen.",
+        "target_language": "EN",
+        "reference": "In any event, this question is not presently included among the requests for topical and urgent debate on Thursday."
+    },
+    {
+        "id": 67,
+        "text": "Arbeitsplan",
+        "target_language": "EN",
+        "reference": "Agenda"
+    },
+    {
+        "id": 68,
+        "text": "Nach der Tagesordnung folgt die Prüfung des endgültigen Entwurfs der Tagesordnung, wie er nach Artikel 110 der Geschäftsordnung am Donnerstag, dem 13. Januar von der Konferenz der Präsidenten festgelegt wurde.",
+        "target_language": "EN",
+        "reference": "The next item is the verification of the final version of the draft agenda as drawn up by the Conference of Presidents at its meeting of 13 January pursuant to Rule 110 of the Rules of Procedure."
+    },
+    {
+        "id": 69,
+        "text": "Zu Montag und Dienstag liegen keine Änderungen vor.",
+        "target_language": "EN",
+        "reference": "No amendments have been proposed relating to Monday and Tuesday."
+    },
+    {
+        "id": 70,
+        "text": "Zum Mittwoch:",
+        "target_language": "EN",
+        "reference": "Relating to Wednesday:"
+    },
+    {
+        "id": 71,
+        "text": "Die Sozialdemokratische Fraktion beantragt, eine Erklärung der Kommission über ihre strategischen Ziele für die nächsten fünf Jahre sowie über die Verwaltungsreform der Kommission in die Tagesordnung aufzunehmen.",
+        "target_language": "EN",
+        "reference": "The Group of the Party of European Socialists requests that a Commission statement be included on its strategic objectives for the next five years and on the administrative reform of the Commission."
+    },
+    {
+        "id": 72,
+        "text": "Ich bitte den Antragsteller, Herrn Barón Crespo, seinen Antrag zu begründen, falls er dies wünscht.",
+        "target_language": "EN",
+        "reference": "I would like Mr Barón Crespo, who made the request, to speak to propose it. That is, if he so wishes, of course."
+    },
+    {
+        "id": 73,
+        "text": "Danach verfahren wir wie üblich: ein Redner dafür, einer dagegen.",
+        "target_language": "EN",
+        "reference": "Then we shall follow the usual procedure, hearing one speaker in favour and one against."
+    },
+    {
+        "id": 74,
+        "text": "Frau Präsidentin! Die Vorstellung des politischen Programms der Kommission Prodi für die gesamte Wahlperiode ging auf einen Vorschlag der Fraktion der Sozialdemokratischen Partei Europas zurück, der die einhellige Billigung der Konferenz der Präsidenten im September und auch die ausdrückliche Zustimmung von Präsident Prodi fand, der seine Zusage in seiner Antrittsrede bekräftigte.",
+        "target_language": "EN",
+        "reference": "Madam President, the presentation of the Prodi Commission' s political programme for the whole legislature was initially a proposal by the Group of the Party of European Socialists which was unanimously approved by the Conference of Presidents in September and which was also explicitly accepted by President Prodi, who reiterated his commitment in his inaugural speech."
+    },
+    {
+        "id": 75,
+        "text": "Diese Zusage ist insofern von Bedeutung, als die Kommission ein Organ ist, das nach den Verträgen das Initiativmonopol besitzt und somit grundlegend die politische und legislative Tätigkeit dieses Parlaments in den nächsten fünf Jahren gestaltet.",
+        "target_language": "EN",
+        "reference": "This commitment is important because the Commission is a body with a monopoly of initiative in accordance with the Treaties and, therefore, basically dictates this Parliament' s political and legislative activity for the next five years."
+    },
+    {
+        "id": 76,
+        "text": "Ich möchte auch daran erinnern, daß dieses Parlament in der vorangegangenen Wahlperiode Präsident Prodi zweimal sein Vertrauen ausgesprochen hat; in dieser Wahlperiode sprach es ihm im Juli erneut sein Vertrauen aus, und dann, als die neue Kommission im Amt war, gab es im September erneut ein Vertrauensvotum für die Kommission insgesamt.",
+        "target_language": "EN",
+        "reference": "I would also like to point out, Madam President, that this Parliament voted to express its confidence in President Prodi during the previous legislature. It did so again during this legislature, in July, and then, in September, it voted once more to approve the whole Commission."
+    },
+    {
+        "id": 77,
+        "text": "Somit hatte die Kommission bereits genügend Zeit, ihr Programm zu erarbeiten, und wir, um es kennenlernen und den Bürgern erklären zu können.",
+        "target_language": "EN",
+        "reference": "There has therefore been enough time for the Commission to prepare its programme and for us to become familiar with it and explain it to our citizens."
+    },
+    {
+        "id": 78,
+        "text": "In diesem Sinne erinnere ich an die Entschließung vom 15. September, in der empfohlen wurde, den Vorschlag in der kürzestmöglichen Frist vorzulegen.",
+        "target_language": "EN",
+        "reference": "To this end, I would like to remind you of the resolution of 15 September, which recommended that the proposal be presented as soon as possible."
+    },
+    {
+        "id": 79,
+        "text": "Die Ereignisse der vergangenen Woche - die am Rande der Konferenz der Präsidenten ihren Anfang nahmen und wobei diese Konferenz nur zur Bestätigung und Ratifizierung von außerhalb gefaßten Beschlüssen genutzt wurde - verdeutlichen ein Dilemma: Entweder ist die Kommission nicht in der Lage, dieses Programm vorzulegen (In diesem Fall sollte sie eine Klärung herbeiführen.",
+        "target_language": "EN",
+        "reference": "The events of last week - which originated outside the Conference of Presidents, that Conference being used simply to corroborate and ratify decisions taken elsewhere - present us with a dilemma. Either the Commission is not ready to present this programme, in which case it should clarify it."
+    },
+    {
+        "id": 80,
+        "text": "Nach den Worten ihres Präsidenten ist sie dazu in der Lage.",
+        "target_language": "EN",
+        "reference": "According to its President, it is in a position to do so."
+    },
+    {
+        "id": 81,
+        "text": "Da die Kommission durch die Vizepräsidentin, Frau de Palacio, vertreten ist, halte ich es für zweckmäßig, vor der Abstimmung die Position der Kommission hinsichtlich ihrer Bereitschaft zur Vorstellung des Programms, so wie es vereinbart war, zu erfahren.), oder das Parlament ist zur Prüfung dieses Programms nicht in der Lage, wie einige offenbar vorgeben.",
+        "target_language": "EN",
+        "reference": "Given that the Commission is represented by Vice-President de Palacio, I believe that, before voting, it would help if the Commission could let us know how ready it is to present this programme, as agreed. Alternatively, Parliament is not ready to examine this programme, as some appear to be suggesting."
+    },
+    {
+        "id": 82,
+        "text": "Nach meiner Ansicht würde diese zweite Hypothese einem Verzicht auf unsere Verantwortung als Parlament und darüber hinaus dem Aufwerfen einer originellen These, einer unbekannten Methode gleichkommen, die darin bestände, den Fraktionen die programmatische Rede der Kommission in schriftlicher Form eine Woche vorher - und nicht, wie vereinbart, am Tag zuvor - zur Kenntnis zu geben, wobei zu berücksichtigen ist, daß das Legislativprogramm im Februar diskutiert werden wird, so daß wir auf die Aussprache verzichten könnten, da die Presse und das Internet am Tag darauf alle Bürger darüber informiert haben würden und das Parlament keinen Grund mehr hätte, sich mit der Angelegenheit zu befassen.",
+        "target_language": "EN",
+        "reference": "In my opinion, this second hypothesis would imply the failure of Parliament in its duty as a Parliament, as well as introducing an original thesis, an unknown method which consists of making political groups aware, in writing, of a speech concerning the Commission' s programme a week earlier - and not a day earlier, as had been agreed - bearing in mind that the legislative programme will be discussed in February, so we could forego the debate, since on the next day our citizens will hear about it in the press and on the Internet and Parliament will no longer have to worry about it."
+    },
+    {
+        "id": 83,
+        "text": "Da meine Fraktion der Meinung ist, daß ein Parlament dazu da ist, zuzuhören, zu diskutieren und nachzudenken, gibt es unserer Ansicht nach keinen Grund zur Rechtfertigung dieser Verzögerung, und wir glauben, wenn die Kommission dazu in der Lage ist, liegen wir genau in der Zeit, um die ursprüngliche Vereinbarung zwischen dem Parlament und der Kommission wieder in Kraft zu setzen und verantwortungsbewußt vor unsere Mitbürgerinnen und Mitbürgern treten zu können.",
+        "target_language": "EN",
+        "reference": "My Group believes that since a parliament is meant to listen, debate and reflect, there can be no justification whatsoever for this delay and we believe that, if the Commission is ready to do so, we still have time to re-establish the original agreement between Parliament and the Commission and proceed in a manner which fulfils our duty to our fellow citizens."
+    },
+    {
+        "id": 84,
+        "text": "Deshalb besteht der Vorschlag der Fraktion der Sozialdemokratischen Partei Europas, den Sie erwähnt haben, darin, den Mittwoch als Termin der Vorstellung des Programms der Kommission Prodi für die Wahlperiode beizubehalten, und in dieses Programm auch das Verwaltungsreformprojekt einzubeziehen, da wir andernfalls in eine paradoxe Situation geraten könnten: Mit der Ausrede, der Wortlaut liege nicht vor, wird einerseits dem Präsidenten der Kommission das Recht abgesprochen, in diesem Parlament zu sprechen, und andererseits würde eine Aussprache über die Reform stattfinden, ohne daß dieses Parlament zuvor die Texte lesen konnte, die der Aussprache zugrunde liegen.",
+        "target_language": "EN",
+        "reference": "Therefore, the proposal of the Group of the Party of European Socialists, and which you have mentioned, is that the Prodi Commission present its legislative programme on Wednesday, including its proposed administrative reform, because, otherwise, we could find ourselves in a paradoxical situation: on the pretext that there is no text, on the one hand, the President of the Commission would be denied his right to speak in this Parliament and, on the other hand, there would be a debate on a reform when Parliament had no prior knowledge of the texts on which it is based."
+    },
+    {
+        "id": 85,
+        "text": "Daher bitte ich Sie, Frau Präsidentin, die Kommission zu ersuchen, sich jetzt zu äußern, und danach zur Abstimmung zu schreiten.",
+        "target_language": "EN",
+        "reference": "Therefore, Madam President, I would ask you to request that the Commission express its opinion on this issue and that we then proceed to the vote."
+    },
+    {
+        "id": 86,
+        "text": "(Beifall der PSE-Fraktion)",
+        "target_language": "EN",
+        "reference": "(Applause from the PSE Group)"
+    },
+    {
+        "id": 87,
+        "text": "Frau Präsidentin, liebe Kolleginnen und Kollegen! Ich bin doch etwas erstaunt über das Verhalten des Kollegen Barón Crespo, der jetzt verlangt, daß dieser Tagesordnungspunkt auf die Tagesordnung für Mittwoch gesetzt wird.",
+        "target_language": "EN",
+        "reference": "Madam President, I really am quite astonished at Mr Barón Crespo' s behaviour and the fact that he is now asking for this item to be put on Wednesday's agenda."
+    },
+    {
+        "id": 88,
+        "text": "Herr Kollege Barón Crespo, Sie konnten am letzten Donnerstag in der Konferenz der Präsidenten nicht anwesend sein.",
+        "target_language": "EN",
+        "reference": "Mr Barón Crespo, you were unable to attend the Conference of Presidents last Thursday."
+    },
+    {
+        "id": 89,
+        "text": "Das kritisiere ich nicht; es kommt immer mal vor, daß man sich vertreten läßt.",
+        "target_language": "EN",
+        "reference": "I am not criticising this; it happens from time to time that people send someone to represent them."
+    },
+    {
+        "id": 90,
+        "text": "Der Kollege Hänsch hat Sie dort vertreten.",
+        "target_language": "EN",
+        "reference": "Mr Hänsch represented you on this occasion."
+    },
+    {
+        "id": 91,
+        "text": "Wir haben in der Konferenz der Präsidenten eine ausführliche Debatte geführt.",
+        "target_language": "EN",
+        "reference": "In the Conference of Presidents, we had an in-depth discussion."
+    },
+    {
+        "id": 92,
+        "text": "Nur Ihre Fraktion hat das vertreten, was Sie jetzt sagen.",
+        "target_language": "EN",
+        "reference": "Your Group was alone in advocating what you are saying now."
+    },
+    {
+        "id": 93,
+        "text": "Wir haben dann abgestimmt.",
+        "target_language": "EN",
+        "reference": "We then put it to a vote."
+    },
+    {
+        "id": 94,
+        "text": "Jeder Vorsitzende bzw. jede Vorsitzende hat ja so viele Stimmen, wie die Fraktion Mitglieder hat.",
+        "target_language": "EN",
+        "reference": "As you know, each chairman has the same number of votes as his Group has Members."
+    },
+    {
+        "id": 95,
+        "text": "Es gab eine Abstimmung zu diesem Punkt.",
+        "target_language": "EN",
+        "reference": "There was a vote on this matter."
+    },
+    {
+        "id": 96,
+        "text": "Diese Abstimmung ist meiner Erinnerung nach so ausgegangen: 422 gegen 180 Stimmen bei einigen wenigen Enthaltungen.",
+        "target_language": "EN",
+        "reference": "As I recall, the outcome of this vote was 422 votes to 180 with a few abstentions."
+    },
+    {
+        "id": 97,
+        "text": "Das heißt, alle Fraktionen, mit Ausnahme der Fraktionslosen - aber die sind ja keine Fraktion - waren sich einig, nur Ihre Fraktion war der Meinung, so zu verfahren, wie Sie es hier vorgeschlagen haben.",
+        "target_language": "EN",
+        "reference": "This means that all the Groups with the exception of the non-attached Members - but, of course, they are not a Group - were in agreement; only your Group thought that we should proceed as you have proposed here."
+    },
+    {
+        "id": 98,
+        "text": "Alle anderen waren anderer Meinung.",
+        "target_language": "EN",
+        "reference": "All of the others were of a different opinion."
+    },
+    {
+        "id": 99,
+        "text": "Das war der Beschluß.",
+        "target_language": "EN",
+        "reference": "That was the decision."
+    },
+    {
+        "id": 100,
+        "text": "Jetzt möchte ich zur Sache selbst etwas sagen.",
+        "target_language": "EN",
+        "reference": "I should now like to comment on the issue itself."
+    },
+    {
+        "id": 101,
+        "text": "Wir haben Vertrauen zur Kommission, zu Romano Prodi, und die ganz große Mehrheit unserer Fraktion hat Romano Prodi und der Kommission nach einem schwierigen Prozeß, wie jeder weiß, das Vertrauen ausgesprochen.",
+        "target_language": "EN",
+        "reference": "We have confidence in the Commission and in Romano Prodi and, after a difficult procedure, as everyone knows, the vast majority of our Group supported the vote of confidence in Romano Prodi and the Commission."
+    },
+    {
+        "id": 102,
+        "text": "Aber wir sind auch der Meinung, daß wir eine Debatte über diese Strategie der Kommission in einem geordneten Verfahren führen müssen, nicht nur aufgrund einer mündlichen Erklärung hier im Europäischen Parlament, sondern auch aufgrund eines Dokumentes, das in der Kommission beschlossen ist und dieses Programm für fünf Jahre beschreibt.",
+        "target_language": "EN",
+        "reference": "We believe, however, that the Commission's strategic plan needs to be debated within a proper procedural framework, not only on the basis of an oral statement here in the European Parliament, but also on the basis of a document which is adopted in the Commission and which describes this programme over the five-year period."
+    },
+    {
+        "id": 103,
+        "text": "Ein solches Dokument gibt es nicht!",
+        "target_language": "EN",
+        "reference": "There is no such document!"
+    },
+    {
+        "id": 104,
+        "text": "Die Kommission wird das Programm für das Jahr 2000 im Februar vorlegen.",
+        "target_language": "EN",
+        "reference": "The Commission will present its programme for the year 2000 in February."
+    },
+    {
+        "id": 105,
+        "text": "Wir haben gesagt, o. k, wenn die Kommission das Programm 2000 noch nicht im Januar machen will, dann machen wir das im Februar.",
+        "target_language": "EN",
+        "reference": "We have said, very well, if the Commission does not wish to introduce the 2000 programme as early as January then we will do it in February."
+    },
+    {
+        "id": 106,
+        "text": "Wir haben dem zugestimmt.",
+        "target_language": "EN",
+        "reference": "We have agreed to this."
+    },
+    {
+        "id": 107,
+        "text": "Wir wollen ja an sich keinen Streit mit der Kommission, sondern wir sind der Meinung, wenn es eben geht, müssen Kommission und Parlament einen gemeinsamen Weg gehen.",
+        "target_language": "EN",
+        "reference": "After all, we do not wish to quarrel with the Commission; if at all possible, we believe that the Commission and Parliament need to tread the same path."
+    },
+    {
+        "id": 108,
+        "text": "Aber wir als Parlament sind auch der Kontrolleur der Kommission. Und nicht alles, was von der Kommission kommt, muß unsere Meinung sein.",
+        "target_language": "EN",
+        "reference": "However, we in Parliament also have a supervisory role with regard to the Commission and we do not have to agree with everything which comes out of the Commission."
+    },
+    {
+        "id": 109,
+        "text": "Ich möchte, daß wir uns auf eine Debatte über das Fünfjahresprogramm in den Fraktionen vernünftig vorbereiten können.",
+        "target_language": "EN",
+        "reference": "I should like us to be able to do a reasonable amount of preparation for the debate on the five-year programme in our Groups."
+    },
+    {
+        "id": 110,
+        "text": "Man kann sich nicht vorbereiten, wenn man hier eine Erklärung hört und gar nicht weiß, was Inhalt einer solchen Erklärung ist.",
+        "target_language": "EN",
+        "reference": "You cannot prepare if you hear a statement in this House and have no idea of its content."
+    },
+    {
+        "id": 111,
+        "text": "Deswegen ist es unsere Empfehlung - und mein Eindruck ist, daß die Kommission auch aufgeschlossen ist für diesen Gedanken -, daß wir im Februar die Debatte über das langfristige Programm der Kommission bis zum Jahre 2005 führen - ich hoffe, die Kommission wird sich bis dahin auch auf ein Programm verständigen, das sie uns vorschlagen wird -, und daß wir gleichzeitig im Februar auch die Debatte über das Legislativprogramm der Kommission für das Jahr 2000 führen.",
+        "target_language": "EN",
+        "reference": "That is why we would recommend - and it is my impression that the Commission is also open to this idea - that we hold the debate on the Commission's long-term programme up to the year 2005 in February - and I hope that the Commission will agree on a programme before then which it will propose to us - and that, at the same time, in February we also hold the debate on the Commission's legislative programme for the year 2000."
+    },
+    {
+        "id": 112,
+        "text": "Es ist also auch ein vernünftiger sachlicher Zusammenhang, der uns rät, die Debatte über beide Programme gemeinsam zu führen.",
+        "target_language": "EN",
+        "reference": "The fact that the subjects are connected also suggests that we should hold the debate on both programmes together."
+    },
+    {
+        "id": 113,
+        "text": "Deswegen lehnt meine Fraktion den Vorschlag der Sozialistischen Fraktion entschieden ab!",
+        "target_language": "EN",
+        "reference": "That is why my Group firmly rejects the proposal made by the Socialist Group."
+    },
+    {
+        "id": 114,
+        "text": "(Beifall von der PPE-DE-Fraktion)",
+        "target_language": "EN",
+        "reference": "(Applause from the PPE-DE Group)"
+    },
+    {
+        "id": 115,
+        "text": "Ich schlage vor, daß wir über den Antrag der Sozialdemokratischen Fraktion, die Erklärung der Kommission über ihre strategischen Ziele wieder auf die Tagesordnung zu setzen, abstimmen.",
+        "target_language": "EN",
+        "reference": "I propose that we vote on the request of the Group of the Party of European Socialists that the Commission statement on its strategic objectives should be reinstated."
+    },
+    {
+        "id": 116,
+        "text": "(Das Parlament lehnt den Antrag ab.) Die Präsidentin.",
+        "target_language": "EN",
+        "reference": "(Parliament rejected the request) President."
+    },
+    {
+        "id": 117,
+        "text": "Zum Mittwoch liegt mir noch ein weiterer Antrag betreffend die mündliche Anfrage über die Kapitalsteuer vor.",
+        "target_language": "EN",
+        "reference": "Still on the subject of Wednesday' s sitting, I have another proposal regarding the oral question on capital tax."
+    },
+    {
+        "id": 118,
+        "text": "Die PPE/DE-Fraktion beantragt, diesen Punkt von der Tagesordnung abzusetzen.",
+        "target_language": "EN",
+        "reference": "The PPE-DE Group is requesting that this item be taken off the agenda."
+    },
+    {
+        "id": 119,
+        "text": "Möchte jemand den Antrag im Namen der Fraktion begründen?",
+        "target_language": "EN",
+        "reference": "Is there a member who wishes to speak on behalf of this Group to propose this?"
+    },
+    {
+        "id": 120,
+        "text": "Frau Präsidentin, da ich bei den Sozialisten ein bißchen Gelächter höre - mir wurde gesagt, daß auch weite Kreise der Sozialistischen Fraktion diesen Tagesordnungspunkt gern abgesetzt haben wollen, weil bei der Abstimmung in der Konferenz der Präsidenten das Votum der Arbeitsgruppe der zuständigen Kolleginnen und Kollegen der Sozialistischen Fraktion nicht vorlag.",
+        "target_language": "EN",
+        "reference": "Madam President, I can hear a ripple of laughter from the Socialists. I was told that large sections of the Socialist Group were also keen to have this item taken off the agenda, because at the vote in the Conference of Presidents no vote was received from the working group of Members of the Socialist Group responsible for this matter."
+    },
+    {
+        "id": 121,
+        "text": "Ich weiß nicht, ob diese Information richtig ist, aber wir als EVP-ED-Fraktion wären jedenfalls dankbar, wenn dieser Punkt abgesetzt würde, weil sich das Parlament nämlich schon mehrfach mit dieser Frage befaßt hat.",
+        "target_language": "EN",
+        "reference": "I do not know whether this information is correct, but the PPE-DE Group would, in any case, be grateful if this item were removed because Parliament has addressed this issue several times already."
+    },
+    {
+        "id": 122,
+        "text": "Es gibt auch Beschlüsse gegen eine solche Steuer.",
+        "target_language": "EN",
+        "reference": "Decisions have also been adopted against a tax of this kind."
+    },
+    {
+        "id": 123,
+        "text": "Deswegen beantragt meine Fraktion, diesen Punkt von der Tagesordnung abzusetzen.",
+        "target_language": "EN",
+        "reference": "That is why my Group moves that this item be taken off the agenda."
+    },
+    {
+        "id": 124,
+        "text": "Vielen Dank, Herr Poettering.",
+        "target_language": "EN",
+        "reference": "Thank you, Mr Poettering."
+    },
+    {
+        "id": 125,
+        "text": "Wir kommen nun zu Herrn Wurtz, der gegen den Antrag spricht.",
+        "target_language": "EN",
+        "reference": "We shall now hear Mr Wurtz speaking against this request."
+    },
+    {
+        "id": 126,
+        "text": "Frau Präsidentin, ich möchte zunächst darauf hinweisen, daß das, was Herr Poettering da sagt, nicht ganz logisch ist.",
+        "target_language": "EN",
+        "reference": "Madam President, I would firstly like to point out Mr Poettering' s lack of logic."
+    },
+    {
+        "id": 127,
+        "text": "Zum einen belehrt er die Sozialdemokratische Fraktion, weil diese eine ganz klare und eindeutige Entscheidung der Konferenz der Präsidenten in Frage stellt. Und nun tut er genau dasselbe.",
+        "target_language": "EN",
+        "reference": "He has just been preaching to the Group of the Party of European Socialists because they went back on a decision taken in a perfectly clear manner at the Conference of Presidents, and now he is doing just the same."
+    },
+    {
+        "id": 128,
+        "text": "Wir haben diskutiert, wir waren uns einig, nur die EVP-Fraktion und die Liberalen nicht.",
+        "target_language": "EN",
+        "reference": "We discussed that matter and we were unanimous, with the exception of the PPE and ELDR Groups."
+    },
+    {
+        "id": 129,
+        "text": "Und ich hatte noch darauf hingewiesen, die anderen Präsidentenkollegen werden sich noch daran erinnern, daß es nicht darum geht, ob man für oder gegen die Tobin-Steuer ist, sondern darum, ob wir bereit sind, uns anzuhören, was die Kommission und der Rat davon halten.",
+        "target_language": "EN",
+        "reference": "As my fellow chairmen will recall, I even mentioned that it was not a matter of knowing whether one was for or against the Tobin tax, but of whether one dared to hear what the Commission and the Council thought of it."
+    },
+    {
+        "id": 130,
+        "text": "Das ist nicht zuviel verlangt.",
+        "target_language": "EN",
+        "reference": "It is not a lot to ask."
+    },
+    {
+        "id": 131,
+        "text": "Ich wiederhole also den Vorschlag, diese mündliche Anfrage an die Kommission und den Rat aufrechtzuerhalten, um ein für alle Mal die Meinung dieser beiden Institutionen zu diesem relativ bescheidenen Vorschlag zu erfahren, der für die Öffentlichkeit ein wichtiges Signal wäre, insbesondere nach der Aufregung im Gefolge des Scheiterns der Konferenz von Seattle.",
+        "target_language": "EN",
+        "reference": "I therefore repeat the proposal that this oral question to the Commission and the Council should be retained so that we can find out, once and for all, the positions of these two bodies regarding the proposal which is relatively modest but which would give a clear message to public opinion, particularly after the tide of feeling generated by the failure of the Seattle Conference."
+    },
+    {
+        "id": 132,
+        "text": "Wir stimmen jetzt über den Antrag der PPE/DE-Fraktion ab, die mündliche Anfrage über die Kapitalsteuer von der Tagesordnung abzusetzen.",
+        "target_language": "EN",
+        "reference": "We shall proceed to vote on the PPE-DE Group' s request that the oral question regarding the capital tax be withdrawn from the agenda."
+    },
+    {
+        "id": 133,
+        "text": "(Das Parlament lehnt den Antrag mit 164 Ja-Stimmen, 166 Nein-Stimmen und 7 Enthaltungen ab.)",
+        "target_language": "EN",
+        "reference": "(Parliament rejected the request, with 164 votes for, 166 votes against and 7 abstentions)"
+    },
+    {
+        "id": 134,
+        "text": "Frau Präsidentin, ich möchte Herrn Poettering für das Rühren der Werbetrommel zugunsten dieser Aussprache danken.",
+        "target_language": "EN",
+        "reference": "Madam President, I would like to thank Mr Poettering for advertising this debate."
+    },
+    {
+        "id": 135,
+        "text": "Vielen Dank.",
+        "target_language": "EN",
+        "reference": "Thank you very much."
+    },
+    {
+        "id": 136,
+        "text": "Frau Präsidentin! Ist meine Stimme mitgezählt worden?",
+        "target_language": "EN",
+        "reference": "Madam President, has my vote been counted?"
+    },
+    {
+        "id": 137,
+        "text": "Ich konnte sie nämlich nicht elektronisch abgeben, weil ich die Karte nicht habe.",
+        "target_language": "EN",
+        "reference": "I was unable to vote electronically, since I do not have a card."
+    },
+    {
+        "id": 138,
+        "text": "Ich habe \"dafür \" gestimmt.",
+        "target_language": "EN",
+        "reference": "My vote was \"in favour\" ."
+    },
+    {
+        "id": 139,
+        "text": "In der Tat, wenn man die beiden Mitglieder, die sich gemeldet haben hinzuzählt, dann ergibt sich als Ergebnis ...",
+        "target_language": "EN",
+        "reference": "Indeed, if we add the two Members who have declared themselves, then the result of the vote would be ...."
+    },
+    {
+        "id": 140,
+        "text": "Frau Präsidentin! Die Präsidentschaft hat das Ergebnis der Abstimmung verkündet.",
+        "target_language": "EN",
+        "reference": "Madam President, the Presidency has already declared the result of the vote."
+    },
+    {
+        "id": 141,
+        "text": "Änderungen sind nicht möglich.",
+        "target_language": "EN",
+        "reference": "There is no room for amendments."
+    },
+    {
+        "id": 142,
+        "text": "Frau Präsidentin, bei der früheren Abstimmung zur Frage des Strategieplans der Kommission - keine Angst, ich werde mich an Ihre Entscheidung in dieser Sache halten - hatte ich darum gebeten, vor der Abstimmung im Namen meiner Fraktion sprechen zu dürfen.",
+        "target_language": "EN",
+        "reference": "Madam President, in the earlier vote - and I will abide by your ruling on this matter - on the question of the strategic plan of the Commission I indicated that I would like to speak in advance of the vote on behalf of my Group."
+    },
+    {
+        "id": 143,
+        "text": "Dazu kam es nicht.",
+        "target_language": "EN",
+        "reference": "That did not happen."
+    },
+    {
+        "id": 144,
+        "text": "Ich würde es begrüßen, wenn ich zum Abschluß dieses Geschäftspunktes die Möglichkeit hätte, im Namen meiner Fraktion eine Erklärung zur Abstimmung abzugeben.",
+        "target_language": "EN",
+        "reference": "I would appreciate it if, on the close of this item of business, I might be allowed to give an explanation of vote on behalf of my Group."
+    },
+    {
+        "id": 145,
+        "text": "Das ist eine wichtige Angelegenheit.",
+        "target_language": "EN",
+        "reference": "This is an important matter."
+    },
+    {
+        "id": 146,
+        "text": "Vielleicht wäre es sinnvoll festzuhalten, wie das, was wir eben getan haben, von den einzelnen vor dem Hintergrund ihrer eigenen politischen Analyse aufgenommen wird.",
+        "target_language": "EN",
+        "reference": "It would be useful for the record of the House to state how people perceive what we have just done in the light of their own political analysis."
+    },
+    {
+        "id": 147,
+        "text": "Frau Präsidentin! Ich will die Debatte nicht wieder aufnehmen, aber ich hatte mich auch gemeldet, um zu dem Antrag von Herrn Barón Crespo Stellung zu nehmen.",
+        "target_language": "EN",
+        "reference": "Madam President, I do not wish to reopen the debate, but I had also asked for the floor, to comment on Mr Barón Crespo's motion."
+    },
+    {
+        "id": 148,
+        "text": "Sie haben mich auch nicht aufgerufen.",
+        "target_language": "EN",
+        "reference": "You did not call me either."
+    },
+    {
+        "id": 149,
+        "text": "Ich bedauere das, aber die Abstimmung ist durchgeführt worden, die Entscheidung ist gefallen, also lassen wir die Dinge.",
+        "target_language": "EN",
+        "reference": "I regret this, but the vote has already been taken and the decision is made so let us leave the matter there."
+    },
+    {
+        "id": 150,
+        "text": "Das tut mir leid, Herr Hänsch und Herr Cox.",
+        "target_language": "EN",
+        "reference": "I am terribly sorry, Mr Hänsch and Mr Cox."
+    },
+    {
+        "id": 151,
+        "text": "Ich hatte nicht gesehen, daß Sie ums Wort gebeten hatten.",
+        "target_language": "EN",
+        "reference": "I did not see you asking to speak."
+    },
+    {
+        "id": 152,
+        "text": "Doch die Positionen sind deutlich geworden und werden ins Protokoll aufgenommen.",
+        "target_language": "EN",
+        "reference": "Even so, I think the positions are quite clear and they shall be entered in the Minutes."
+    },
+    {
+        "id": 153,
+        "text": "Wenn wir morgen das Protokoll der Sitzung von heute verabschieden, können die Kolleginnen und Kollegen, die der Auffassung sind, daß die Positionen nicht ausreichend klar geworden sind, Änderungen beantragen.",
+        "target_language": "EN",
+        "reference": "When we adopt the Minutes for today' s sitting tomorrow, then any Members who think the positions have not been explained clearly enough may ask for amendments."
+    },
+    {
+        "id": 154,
+        "text": "Ich halte dieses Vorgehen für angemessen.",
+        "target_language": "EN",
+        "reference": "This seems to me to be a workable solution."
+    },
+    {
+        "id": 155,
+        "text": "Natürlich werden im Protokoll der Sitzung von morgen sämtliche zusätzlichen Erläuterungen berücksichtigt.",
+        "target_language": "EN",
+        "reference": "Of course, the Minutes for tomorrow' s sitting will take into account any additional explanations."
+    },
+    {
+        "id": 156,
+        "text": "Ich halte das für besser als jetzt lange Stimmerklärungen abzugeben.",
+        "target_language": "EN",
+        "reference": "I think this is a better solution than proceeding now to extremely time-consuming explanations of votes."
+    },
+    {
+        "id": 157,
+        "text": "Herr Cox, Herr Hänsch, sind Sie damit einverstanden?",
+        "target_language": "EN",
+        "reference": "Mr Cox, Mr Hänsch, would this be acceptable to you?"
+    },
+    {
+        "id": 158,
+        "text": "Frau Präsidentin, wenn aus der Abstimmung einwandfrei hervorgeht, wie meine Fraktion abgestimmt hat, dann werde und kann ich nichts dagegen sagen.",
+        "target_language": "EN",
+        "reference": "Madam President, if the vote records correctly how my Group voted I shall not, and cannot, object to that."
+    },
+    {
+        "id": 159,
+        "text": "Wenn Sie festlegen, daß ich keine Erklärung zur Abstimmung abgeben kann, akzeptiere ich das, wenngleich unter Vorbehalt.",
+        "target_language": "EN",
+        "reference": "If your ruling is that I cannot give an explanation of vote, I accept that but with reservations."
+    },
+    {
+        "id": 160,
+        "text": "Beim Abfassen des Protokolls werden wir mit großer Sorgfalt vorgehen. Das tun wir im übrigen immer.",
+        "target_language": "EN",
+        "reference": "We shall pay particular attention to the wording of the Minutes, as we always do, of course."
+    },
+    {
+        "id": 161,
+        "text": "Wenn Positionen nicht richtig wiedergegeben werden, können wir das Protokoll gegebenenfalls ändern.",
+        "target_language": "EN",
+        "reference": "If they do not properly reflect the positions adopted, then we may correct them, if necessary."
+    },
+    {
+        "id": 162,
+        "text": "(Das Parlament genehmigt den geänderten Arbeitsplan.)",
+        "target_language": "EN",
+        "reference": "(The order of business was adopted thus amended)"
+    },
+    {
+        "id": 163,
+        "text": "Sicherheitsberater für den Gefahrguttransport",
+        "target_language": "EN",
+        "reference": "Safety advisers for the transport of dangerous goods"
+    },
+    {
+        "id": 164,
+        "text": "Nach der Tagesordnung folgt der Bericht (A5-0105/1999) von Herrn Koch im Namen des Ausschusses für Regionalpolitik, Verkehr und Fremdenverkehr über den Gemeinsamen Standpunkt des Rates im Hinblick auf den Erlaß der Richtlinie des Europäischen Parlaments und des Rates über die Mindestanforderungen für die Prüfung der Sicherheitsberater für die Beförderung gefährlicher Güter auf Straße, Schiene oder Binnenwasserstraßen (C5-0208/1999 - 1998/0106(COD)).",
+        "target_language": "EN",
+        "reference": "The next item is the report (A5-0105/1999) by Mr Koch, on behalf of the Committee on Regional Policy, Transport and Tourism, on the common position adopted by the Council with a view to adopting a European Parliament and Council directive on the harmonisation of examination requirements for safety advisers for the transport of dangerous goods by road, rail or inland waterways (C5-0208/1999 - 1998/0106(COD))."
+    },
+    {
+        "id": 165,
+        "text": "Verehrte Frau Kommissarin, verehrte Präsidentin, liebe Kolleginnen und Kollegen! Ich begrüße den Gemeinsamen Standpunkt des Rates zur Harmonisierung der Ausbildung von Sicherheitsberatern für die Beförderung gefährlicher Güter auf Straße, Schiene oder Binnenwasserstraße unumwunden.",
+        "target_language": "EN",
+        "reference": "Commissioner, Madam President, ladies and gentlemen, I can be quite frank in saying that I welcome the Council's common position on harmonising the training of safety advisers for the transport of dangerous goods by road, rail or inland waterway."
+    },
+    {
+        "id": 166,
+        "text": "Erstens: Wir mußten formal tätig werden, um den Forderungen der Richtlinie 96/35/EG gerecht zu werden, die die Mitgliedstaaten zur Einsetzung von Gefahrgutbeauftragten bzw. Sicherheitsberatern sowie zur Organisation von Ausbildung, Schulung und Prüfung eben dieser Personen verpflichtet, ohne dies explizit auszuführen.",
+        "target_language": "EN",
+        "reference": "Firstly, we needed to take action on a formal level in order to meet the requirements of Directive 96/35/EC, which obliges the Member States to appoint safety advisers and to organise the training, instruction and examination of these people but does not explain this explicitly."
+    },
+    {
+        "id": 167,
+        "text": "Zweitens: Wir erzielen mit dieser Richtlinie a) ein Mehr an Sicherheit, sowohl bei der Beförderung als auch beim Umschlag von gefährlichen Gütern; b) einen Abbau von Wettbewerbsverzerrungen infolge unterschiedlichster nationaler Ausbildungsstrukturen und Ausbildungskosten sowie c) die Herstellung der Chancengleichheit von Sicherheitsberatern auf dem europäischen Arbeitsmarkt.",
+        "target_language": "EN",
+        "reference": "Secondly, by adopting this directive we achieve a) an increase in safety when dangerous goods are both transported and transhipped; b) a reduction in distortions of competition resulting from wide variations in national training structures and training costs and c) equal opportunities for safety advisers on the European labour market."
+    },
+    {
+        "id": 168,
+        "text": "Drittens garantieren wir mit der Richtlinie, so wie sie jetzt als Gemeinsamer Standpunkt vorliegt, insbesondere da sie sich ausschließlich auf Mindestnormen beschränkt, einen hohen Flexibilitätsgrad und geringe Reglementierung durch die Europäische Union, und wir tragen zur hohen Eigenverantwortung der Mitgliedstaaten bei.",
+        "target_language": "EN",
+        "reference": "Thirdly, this directive, as it currently stands in the common position, guarantees - in particular because it confines itself exclusively to minimum standards - a high degree of flexibility and modest regulation by the European Union; by adopting it we contribute to the Member States' bearing a high level of individual responsibility."
+    },
+    {
+        "id": 169,
+        "text": "All dies ist im Sinne der Subsidiarität außerordentlich zu begrüßen.",
+        "target_language": "EN",
+        "reference": "All of this is in accordance with the principle of subsidiarity and is therefore to be greatly welcomed."
+    },
+    {
+        "id": 170,
+        "text": "Unsere Änderungsanträge aus der ersten Lesung halte ich für sehr zufriedenstellend berücksichtigt.",
+        "target_language": "EN",
+        "reference": "Our amendments from the first reading have, I believe, been taken into account very satisfactorily."
+    },
+    {
+        "id": 171,
+        "text": "Sie wurden übernommen, sinngemäß umgesetzt bzw. sie entfielen, weil die entsprechenden europäischen Regelungen nicht aufgenommen wurden, z. B. ein Sanktionssystem bei Verstößen oder eine komplizierte Blockbildung von Fragenkomplexen.",
+        "target_language": "EN",
+        "reference": "They have either been accepted or transposed with no change in the substance, or they have been rejected because the corresponding European arrangements have not been included, for example a system of penalties for violations of the rules or a complex classification structure for related groups of questions."
+    },
+    {
+        "id": 172,
+        "text": "Für den einen einstimmig angenommenen Änderungsantrag des Ausschusses für Regionalpolitik und Verkehr, der die zeitliche Umsetzung der Richtlinie betrifft, bitte ich um Zustimmung.",
+        "target_language": "EN",
+        "reference": "The one unanimously adopted amendment of the Committee on Regional Policy and Transport, which concerns the timetable for implementing the directive, is something which I would urge you to support."
+    },
+    {
+        "id": 173,
+        "text": "Indem wir den Mitgliedstaaten für die Umsetzung der Richtlinie kein spezifisches Datum setzen, sondern ihnen einen Zeitraum von drei Monaten nach Inkrafttreten der Richtlinie zugestehen, führen wir eine Flexibilitätsklausel ein, die eine unverzügliche Umsetzung gewährleistet.",
+        "target_language": "EN",
+        "reference": "By not setting a specific date for the Member States to implement the directive and instead giving them a period of three months after its entry into force, we are introducing a flexibility clause which ensures that the directive will be implemented without delay."
+    },
+    {
+        "id": 174,
+        "text": "Ich bitte Sie um Zustimmung.",
+        "target_language": "EN",
+        "reference": "I would urge you to endorse this."
+    },
+    {
+        "id": 175,
+        "text": "Frau Präsidentin! Wir können und dürfen uns nicht damit abfinden, immer häufiger von Unfällen zu hören, bei denen auf der Straße, aber auch auf der Schiene oder auf Wasserwegen große Schäden entstehen, nicht nur, aber auch, weil die Betroffenen den Transit von gefährlichen Gütern nicht ernst genug nehmen oder weil durch Unwissen oder aufgrund mangelnder Ausbildung der Fahrer oder sonstiger Verantwortlicher für die diversen Verkehrsmittel aus einem kleinen Unfall allzu oft eine große Katastrophe geworden ist.",
+        "target_language": "EN",
+        "reference": "Madam President, we cannot and must not accept the fact that we hear ever more frequently of accidents causing major damage on our roads, but also on our railways and waterways, not solely but at least partly because those involved do not take the transport of dangerous goods seriously enough or because - as a result of ignorance or a lack of training on the part of the drivers or others responsible for the various vehicles - a minor accident has all too often become a major disaster."
+    },
+    {
+        "id": 176,
+        "text": "Mir als Österreicher, aber ich glaube, uns allen ist noch die Katastrophe in lebendiger Erinnerung, die im vergangenen Jahr im Tauerntunnel zahlreiche Menschenleben gekostet hat und wo anschließend viele Monate lang mit gigantischem finanziellem Aufwand wiederaufgebaut werden mußte, was bei diesem Brand im Tunnel zerstört worden ist.",
+        "target_language": "EN",
+        "reference": "As an Austrian, I still have a vivid memory, as, I believe, we all do, of the catastrophe which cost so many human lives last year in the Tauern Tunnel, where subsequent work to rebuild the parts of the tunnel which had been destroyed in this fire continued for many months at huge expense."
+    },
+    {
+        "id": 177,
+        "text": "Die monatelange Renovierung hat diesen wichtigen Verkehrsweg zwischen dem Norden und dem Süden Europas abgeschnitten.",
+        "target_language": "EN",
+        "reference": "The renovation project, which lasted for months, cut off this important route between the north and south of Europe."
+    },
+    {
+        "id": 178,
+        "text": "Der dadurch bewirkte Umwegsverkehr hat viele Tausend EU-Bürger bis an die Grenze des Erträglichen belastet.",
+        "target_language": "EN",
+        "reference": "The traffic which had to be diverted because of this stretched the patience of many thousands of people in the EU to the limit."
+    },
+    {
+        "id": 179,
+        "text": "Es war in einzelnen Gemeinden in meinem Land wirklich die Hölle los.",
+        "target_language": "EN",
+        "reference": "In fact, all hell broke loose in some municipalities in my province."
+    },
+    {
+        "id": 180,
+        "text": "Prävention muß unsere Antwort auf derartige Katastrophen sein, und mit dem vorliegenden Richtlinienentwurf schaffen wir eine wichtige Grundlage dafür, daß gut ausgebildete Sicherheitsbeauftragte zur Verfügung stehen, damit rechtzeitig das Richtige getan wird.",
+        "target_language": "EN",
+        "reference": "Prevention has to be our answer to disasters of this kind and this draft directive is an important step towards well-trained safety advisers being available, so that the right action is taken in good time."
+    },
+    {
+        "id": 181,
+        "text": "Wir dürfen uns freilich nicht damit begnügen, europäisches Recht im Dienste von mehr Sicherheit zu schaffen.",
+        "target_language": "EN",
+        "reference": "All the same, we must not content ourselves with enacting European law to ensure greater safety."
+    },
+    {
+        "id": 182,
+        "text": "Wir müssen auch konsequent darauf achten, daß unsere Vorgaben fristgerecht durch die Mitgliedstaaten umgesetzt werden, und noch wichtiger, wir müssen darauf achten, daß sie anschließend auch angewendet werden.",
+        "target_language": "EN",
+        "reference": "We also need to follow this up and make sure that our rules are transposed by the Member States in good time and - even more importantly - we need to ensure that they are also applied afterwards."
+    },
+    {
+        "id": 183,
+        "text": "Bitte nicht noch einen weiteren Bereich, in dem wir dann anschließend das Vollzugsdefizit beklagen müssen.",
+        "target_language": "EN",
+        "reference": "Please let this not be yet another sector where we subsequently have to lament the lack of enforcement."
+    },
+    {
+        "id": 184,
+        "text": "Einen letzten Punkt möchte ich noch ansprechen: Wir dürfen uns nicht damit begnügen, eine weitere Lücke im Sicherheitsnetz zu schließen und die Augen davor zu verschließen, daß beim Thema Verkehrssicherheit in Europa noch viel mehr zu tun ist.",
+        "target_language": "EN",
+        "reference": "I should like to address one final point. We must not content ourselves with sealing another hole in the safety net and shutting our eyes to the fact that, where transport safety in Europe is concerned, there is still much more to be done."
+    },
+    {
+        "id": 185,
+        "text": "Ich verlange in diesem Zusammenhang auch und bitte die anwesende zuständige Kommissarin, möglichst bald einen entsprechenden Text vorzulegen, um auch in Zukunft für mehr Sicherheit im Tunnelverkehr zu sorgen, damit wir in Europa solche Katastrophen nicht mehr in diesem Ausmaß erleben müssen!",
+        "target_language": "EN",
+        "reference": "In this context, I should like to make a request and ask the Commissioner responsible, who is with us here today, to table an appropriate text as soon as possible with a view to continuing to make it safer for traffic to transit tunnels in the future, so that we in Europe do not have to experience any more such disasters on this scale."
+    },
+    {
+        "id": 186,
+        "text": "Frau Präsidentin, zunächst möchte ich Herrn Koch für seinen Bericht danken, der die Verkehrssicherheit zum Thema hat.",
+        "target_language": "EN",
+        "reference": "Madam President, first of all I should like to thank Mr Koch for his report which has, at its heart, the issue of transport safety."
+    },
+    {
+        "id": 187,
+        "text": "Der Bericht befaßt sich mit der Harmonisierung von Prüfungsanforderungen für Sicherheitsberater, die im Bereich der Beförderung gefährlicher Güter auf Straße, Schiene oder Binnenwasserstraße tätig sind.",
+        "target_language": "EN",
+        "reference": "The report looks at the issue of harmonising the examination requirements for safety advisors working in the areas of transportation of dangerous goods by road, rail and inland waterway."
+    },
+    {
+        "id": 188,
+        "text": "Ich beglückwünsche ihn zu seinem ausgezeichneten Bericht.",
+        "target_language": "EN",
+        "reference": "I congratulate him on his excellent report."
+    },
+    {
+        "id": 189,
+        "text": "Die Verkehrssicherheit bestimmte in letzter Zeit häufig die Negativschlagzeilen: Das Eisenbahnunglück nahe dem Londoner Bahnhof Paddington, das furchtbare Eisenbahnunglück in Norwegen, zwei Flugzeugabstürze, bei denen EU-Bürger zu Schaden kamen, und die von der Erika vor der bretonischen Küste verursachte Naturkatastrophe sind Ereignisse, die allein in den letzten vier Monaten zu verzeichnen waren. Sie machen deutlich, daß Verkehrssicherheit keine Selbstverständlichkeit ist und daß diejenigen, die für den Schutz der Öffentlichkeit verantwortlich sind, hochmotiviert und hochqualifiziert sein müssen.",
+        "target_language": "EN",
+        "reference": "Transport safety has sadly been in the news recently: the Paddington rail crash in London, the terrible rail crash in Norway, the two aviation crashes involving EU citizens and the natural disaster involving the Erika off Brittany - all within the last four months - remind us that transport safety can never be taken for granted and that those charged with protecting the public must be highly motivated and highly qualified."
+    },
+    {
+        "id": 190,
+        "text": "Der Berichterstatter stellte fest, daß der Rat in seinem Gemeinsamen Standpunkt sechs der zehn vom Parlament in der ersten Lesung angenommenen Änderungen übernommen hat und daß die übrigen Änderungen des Parlaments im wesentlichen berücksichtigt worden sind.",
+        "target_language": "EN",
+        "reference": "The rapporteur has pointed out to the House that in its common position the Council has accepted six of Parliament's ten amendments put forward at first reading and that the substance of Parliament's other amendments has been retained."
+    },
+    {
+        "id": 191,
+        "text": "Meine Fraktion wird den Gemeinsamen Standpunkt daher unterstützen und begrüßt die baldige Umsetzung der Regelung, die ein weiteres Instrument im Kampf um die maximale Erhöhung der Verkehrssicherheit in der EU darstellen wird.",
+        "target_language": "EN",
+        "reference": "My Group will therefore support the common position and looks forward to the enactment of the legislation which will provide us with yet another tool in our fight to make transport in the European Union as safe as possible."
+    },
+    {
+        "id": 192,
+        "text": "Initiativen zur Erhöhung der Verkehrssicherheit werden jederzeit von meiner Fraktion unterstützt.",
+        "target_language": "EN",
+        "reference": "When it comes to safety my Group will always support any initiatives to improve transport safety."
+    },
+    {
+        "id": 193,
+        "text": "Wie die jüngsten Ereignisse zeigen, gibt es in diesem Bereich noch sehr viel zu tun.",
+        "target_language": "EN",
+        "reference": "We still have a lot of work to do in this area as recent events have proved."
+    },
+    {
+        "id": 194,
+        "text": "Frau Präsidentin, gestatten Sie mir einige Bemerkungen.",
+        "target_language": "EN",
+        "reference": "Madam President, I would like to make a few comments."
+    },
+    {
+        "id": 195,
+        "text": "Danken möchte ich sowohl dem Berichterstatter für seinen überaus akribischen und sachkundigen Bericht als auch der Kommission für den von ihr eingebrachten Vorschlag.",
+        "target_language": "EN",
+        "reference": "I would like, first of all, to thank the rapporteur for his exceptionally accurate and technical work on the report and, secondly, the Commission for the proposal it has submitted."
+    },
+    {
+        "id": 196,
+        "text": "Es geht um die Angleichung der Prüfungsvorschriften, eigentlich aber auch um Mindestnormen.",
+        "target_language": "EN",
+        "reference": "We are concerned here with the harmonisation of examination requirements but also, in fact, with minimum requirements."
+    },
+    {
+        "id": 197,
+        "text": "In gewissem Sinne bedauere ich das.",
+        "target_language": "EN",
+        "reference": "This is a pity, in a sense."
+    },
+    {
+        "id": 198,
+        "text": "Selbstverständlich kommt der Verkehrssicherheit auf Straße, Schiene oder Binnenwasserstraßen überaus große Bedeutung zu, und angesichts des internationalen Charakters dieser Transporte ist es erforderlich, die Ausbildungsgänge für Sicherheitsberater sowie die Anforderungen beispielsweise im kommenden neuen ADR zu harmonisieren.",
+        "target_language": "EN",
+        "reference": "Needless to say, safety on roads, railways and inland waterways is of key importance and, given the international nature of these types of transport, training for safety advisors should also be harmonised, therefore, as well as the requirements of the new ADR, for example, which is under way."
+    },
+    {
+        "id": 199,
+        "text": "Das halte ich ebenso wie die Umsetzung für wichtig. Natürlich gibt es gute Gründe, weshalb wir diesem Problem besondere Aufmerksamkeit widmen müssen.",
+        "target_language": "EN",
+        "reference": "This is important, but so is enforcement and there are, of course, a number of reasons why we need to pay particular attention to this."
+    },
+    {
+        "id": 200,
+        "text": "Denken Sie an die Unfälle, die sich in den letzten Jahren im Straßenverkehr ereignet haben. Beispielsweise in Belgien, den Niederlanden und weiteren Ländern fuhren Gefahrguttransporter trotz Nebels weiter und wurden nicht, wie es angesichts der Umstände eigentlich erforderlich gewesen wäre, am Straßenrand abgestellt.",
+        "target_language": "EN",
+        "reference": "Just think of the road accidents which have occurred over recent years, for example in Belgium, the Netherlands and a number of other countries where lorries carrying dangerous goods continued to drive in foggy conditions when really they should have pulled off the road instead."
+    }
+]
