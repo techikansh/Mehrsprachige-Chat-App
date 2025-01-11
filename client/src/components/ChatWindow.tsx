@@ -461,7 +461,7 @@ const ChatWindow = ({ contact, propChat, updateChat, setAllChats }: ChatWindowPr
                       )}
                     </div>
                     <span className="text-sm text-gray-500 ml-2">
-                      {propChatState?.participants.length} participants
+                      {propChatState?.participants.length} Teilnehmer
                     </span>
                   </div>
                 </div>

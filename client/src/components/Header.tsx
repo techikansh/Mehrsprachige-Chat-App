@@ -1,10 +1,10 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { IoLogOutOutline } from "react-icons/io5";
 import { IoLogInOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import { logout } from "../store/userSlice";
+import AuraLogo from "../assets/Aura.png";
 
 // sm: 640px  (min-width: 640px)
 // md: 768px  (min-width: 768px)
@@ -25,14 +25,15 @@ const Header = () => {
   return (
     <header className=" flex justify-between py-2 px-10 sm:px-14 md:px-18 lg:px-24 2xl:px-28 items-center border-b border-gray-200 bg-white shadow-md">
       <div className="flex items-center gap-3 hover:cursor-pointer" onClick={() => navigate("/")} title="Home">
-        <svg
+        {/* <svg
           className="h-8 w-8 text-blue-500"
           viewBox="0 0 24 24"
           fill="currentColor"
         >
           <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-        </svg>
-        <h1 className="text-2xl font-semibold">Teams</h1>
+        </svg> */}
+        {/* <h1 className="text-2xl font-semibold">Aura</h1> */}
+        <img src={AuraLogo} alt="Aura Logo" className="h-12 w-32" />
       </div>
 
       <div className="flex gap-3 items-center hover:cursor-pointer" onClick={() => navigate("/profile")} title="Profile">

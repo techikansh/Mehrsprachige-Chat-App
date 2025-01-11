@@ -168,6 +168,7 @@ export async function sendMessage(req, res) {
     });
   }
 }
+
 export async function updateMessage(req, res) {
   const messageId = req.params.messageId;
   const { readBy } = req.body;
