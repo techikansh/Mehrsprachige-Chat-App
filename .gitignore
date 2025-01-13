@@ -48,3 +48,5 @@ Thumbs.db
 
 # Evaluation
 parallel_corpus/
+evaluation/.RData
+evaluation/.Rhistory
