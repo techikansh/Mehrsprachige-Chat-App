@@ -20,6 +20,15 @@ data <- data %>%
     time_taken = as.numeric(time_taken)
   )
 
+# Shapiro-Wilk test for each metric
+shapiro_bleu <- shapiro.test(data$bleu_score)
+shapiro_meteor <- shapiro.test(data$meteor_score)
+shapiro_time <- shapiro.test(data$time_taken)
+shapiro_bleu
+shapiro_meteor
+shapiro_time
+
+
 # Calculate summary statistics
 summary_stats <- data %>%
   group_by(service) %>%
@@ -38,18 +47,14 @@ summary_stats
 kw_bleu <- kruskal.test(bleu_score ~ service, data = data)
 kw_meteor <- kruskal.test(meteor_score ~ service, data = data)
 kw_time <- kruskal.test(time_taken ~ service, data = data)
-kw_bleu; 
-kw_meteor; 
-kw_time;
+kw_bleu;  kw_meteor;  kw_time;
 
 
 # Perform pairwise Wilcoxon tests with p-value adjustment
 pw_bleu <- pairwise.wilcox.test(data$bleu_score, data$service, p.adjust.method = "bonferroni")
 pw_meteor <- pairwise.wilcox.test(data$meteor_score, data$service, p.adjust.method = "bonferroni")
 pw_time <- pairwise.wilcox.test(data$time_taken, data$service, p.adjust.method = "bonferroni")
-pw_bleu
-pw_meteor
-pw_time
+pw_bleu;  pw_meteor;  pw_time;
 
 # Create visualizations
 # Box plots for BLEU scores
