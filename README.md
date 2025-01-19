@@ -91,3 +91,67 @@ Die Anwendung läuft dann unter:
 - Datei- und Avatar-Upload via Firebase Storage
 - Benutzer-Status-Tracking (online/offline)
 - Vorschau der Originalnachricht beim Hover
+
+## Evaluierung
+
+Das Projekt enthält ein umfassendes Evaluierungssystem zum Vergleich verschiedener Übersetzungsdienste (DeepL, Google Gemini und Groq) unter Verwendung paralleler Korpus-Datensätze.
+
+### Einrichtung
+
+1. Erforderliche Abhängigkeiten installieren:
+```bash
+pip install -r evaluation/requirements.txt
+```
+
+2. Erstellen Sie eine `.env` Datei im Evaluierungsverzeichnis mit Ihren API-Schlüsseln:
+```env
+DEEPL_API_KEY=ihr_deepl_key
+GEMINI_API_KEY=ihr_gemini_key
+GROQ_API_KEY=ihr_groq_key
+```
+
+### Datensatzstruktur
+
+Die Evaluierung verwendet parallele Korpus-Datensätze im JSON-Format mit folgenden Elementen:
+- `id`: Eindeutige Kennung für jedes Übersetzungspaar
+- `text`: Ausgangstext für die Übersetzung
+- `target_language`: Zielsprachcode (ES für Spanisch, DE für Deutsch)
+- `reference`: Referenzübersetzung zum Vergleich
+
+### Durchführung der Evaluierung
+
+1. Evaluierungsdatensätze generieren:
+```bash
+python evaluation/dataset_extraction_script.py
+```
+
+2. Evaluierung durchführen:
+```bash
+python evaluation/evaluation_script.py
+```
+
+3. Ergebnisse in R anzeigen:
+```bash
+Rscript evaluation/analysis_script.R
+```
+
+### Metriken
+
+Die Evaluierung misst:
+- **BLEU-Score**: Misst die Übersetzungsqualität durch Vergleich von N-Gramm-Übereinstimmungen
+- **METEOR-Score**: Bewertet die Übersetzungsqualität unter Berücksichtigung von Synonymen und Paraphrasen
+- **Übersetzungszeit**: Erfasst die Dauer für jeden Übersetzungsdienst
+
+### Ausgabe
+
+Die Evaluierung erzeugt:
+- CSV-Datei mit detaillierten Ergebnissen
+- Vergleichende Visualisierungen:
+  - `bleu_comparison.png`
+  - `meteor_comparison.png`
+  - `time_comparison.png`
+  - `combined_comparison.png`
+
+### Batch-Verarbeitung
+
+Das Evaluierungsskript verarbeitet Übersetzungen in Batches, um API-Ratenlimits und Ressourcennutzung zu verwalten. Die Batch-Größe und Verzögerung zwischen den Batches können in den Konstanten des Evaluierungsskripts angepasst werden.
