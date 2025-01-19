@@ -1,4 +1,4 @@
-import { translateText } from "../middleware/utils.js";
+import { translateText, callGroq, callDeepL } from "../middleware/utils.js";
 import Chat from "../models/Chat.model.js";
 import Message from "../models/Message.model.js";
 import User from "../models/User.model.js";
@@ -108,6 +108,8 @@ export async function sendMessage(req, res) {
 
       const prefferedLanguage = receiver.prefferedLanguage;
       const translatedText = await translateText(text, prefferedLanguage);
+      // const translatedText = await callGroq(text, prefferedLanguage);
+      // const translatedText = await callDeepL(text, prefferedLanguage);
 
       message = await Message.create({
         sender: userId,
@@ -124,6 +126,9 @@ export async function sendMessage(req, res) {
     } else {
       const prefferedLanguage = chat.commonLanguage;
       const translatedText = await translateText(text, prefferedLanguage);
+      // const translatedText = await callGroq(text, prefferedLanguage);
+      // const translatedText = await callDeepL(text, prefferedLanguage);
+
       message = await Message.create({
         sender: userId,
         receiver: null,

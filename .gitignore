@@ -50,3 +50,6 @@ Thumbs.db
 parallel_corpus/
 evaluation/.RData
 evaluation/.Rhistory
+
+# Server
+server/apiKeys.js
