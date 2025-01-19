@@ -61,27 +61,27 @@ pw_bleu;  pw_meteor;  pw_time;
 bleu_plot <- ggplot(data, aes(x = service, y = bleu_score, fill = service)) +
   geom_boxplot() +
   theme_minimal() +
-  labs(title = "BLEU Scores by Service",
-       x = "Service",
-       y = "BLEU Score") +
+  labs(title = "BLEU-Werte nach Dienst",
+       x = "Dienst",
+       y = "BLEU-Wert") +
   theme(legend.position = "none")
 
 # Box plots for METEOR scores
 meteor_plot <- ggplot(data, aes(x = service, y = meteor_score, fill = service)) +
   geom_boxplot() +
   theme_minimal() +
-  labs(title = "METEOR Scores by Service",
-       x = "Service",
-       y = "METEOR Score") +
+  labs(title = "METEOR-Werte nach Dienst",
+       x = "Dienst",
+       y = "METEOR-Wert") +
   theme(legend.position = "none")
 
 # Box plots for translation times
 time_plot <- ggplot(data, aes(x = service, y = time_taken, fill = service)) +
   geom_boxplot() +
   theme_minimal() +
-  labs(title = "Translation Times by Service",
-       x = "Service",
-       y = "Time (seconds)") +
+  labs(title = "Übersetzungszeiten nach Dienst",
+       x = "Dienst",
+       y = "Zeit (Sekunden)") +
   theme(legend.position = "none")
 
 # Print results
