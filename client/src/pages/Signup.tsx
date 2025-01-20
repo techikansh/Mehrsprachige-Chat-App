@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { BASE_URL } from "../utils/constants";
 
 const Signup = () => {
     const [firstName, setFirstName] = useState("");
@@ -7,9 +8,49 @@ const Signup = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const [error, setError] = useState<string | null>(
+        null
+    );
+    const [loading, setLoading] = useState<boolean>(false);
+    const navigate = useNavigate();
+
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        // Handle signup logic
+        
+        if (!firstName || !lastName || !email || !password) {
+            setError("Alle Felder müssen ausgefüllt werden");
+            return;
+        }
+
+        try {
+            setError(null);
+            setLoading(true);
+            const url = BASE_URL + "auth/register";
+            const res = await fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    firstName: firstName,
+                    lastName: lastName,
+                    email: email,
+                    password: password
+                })
+            })
+
+            const data = await res.json();
+            if (data.success) {
+                setLoading(false);
+                navigate("/login");
+            } else {
+                setError(data.message);
+                setLoading(false);
+            }
+        } catch (error) {
+            setError(error instanceof Error ? error.message : "Bitte versuchen Sie es später noch einmal");
+            setLoading(false);
+        }
     };
 
     return (

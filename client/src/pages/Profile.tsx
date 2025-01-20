@@ -9,6 +9,7 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { storage } from "../utils/FirebaseConfig";
 import { BASE_URL } from "../utils/constants";
 import { setUser } from "../store/userSlice";
+import { useNavigate } from "react-router-dom";
 const Profile = () => {
   const { id, firstName, lastName, email, prefferedLanguage, avatar, token } = useSelector(
     (state: RootState) => state.user
@@ -30,6 +31,7 @@ const Profile = () => {
   const [uploadError, setUploadError] = useState<string | null>(null);
 
   const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -61,6 +63,7 @@ const Profile = () => {
       const data = await res.json();
       if (data.success) {
         dispatch(setUser({ ...data.user, id: data.user._id, token: token }));
+        navigate("/");
       } else {
         setError(data.message);
       }
