@@ -107,9 +107,9 @@ export async function sendMessage(req, res) {
       }
 
       const prefferedLanguage = receiver.prefferedLanguage;
-      const translatedText = await translateText(text, prefferedLanguage);
-      // const translatedText = await callGroq(text, prefferedLanguage);
-      // const translatedText = await callDeepL(text, prefferedLanguage);
+      const translatedText = await translateText(text, prefferedLanguage); // Gemini
+      // const translatedText = await callGroq(text, prefferedLanguage); // Groq
+      // const translatedText = await callDeepL(text, prefferedLanguage); // DeepL
 
       message = await Message.create({
         sender: userId,
@@ -125,9 +125,9 @@ export async function sendMessage(req, res) {
       });
     } else {
       const prefferedLanguage = chat.commonLanguage;
-      const translatedText = await translateText(text, prefferedLanguage);
-      // const translatedText = await callGroq(text, prefferedLanguage);
-      // const translatedText = await callDeepL(text, prefferedLanguage);
+      const translatedText = await translateText(text, prefferedLanguage); // Gemini
+      // const translatedText = await callGroq(text, prefferedLanguage); // Groq
+      // const translatedText = await callDeepL(text, prefferedLanguage); // DeepL
 
       message = await Message.create({
         sender: userId,

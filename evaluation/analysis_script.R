@@ -28,6 +28,17 @@ shapiro_bleu
 shapiro_meteor
 shapiro_time
 
+# Histogram with density curve
+hist(data$bleu_score, probability = TRUE, col = "lightblue", main = "Histogram of BLEU Score")
+lines(density(data$bleu_score), col = "red", lwd = 2)
+
+hist(data$meteor_score, probability = TRUE, col = "lightgreen", main = "Histogram of METEOR Score")
+lines(density(data$meteor_score), col = "red", lwd = 2)
+
+hist(data$time_taken, probability = TRUE, col = "lightcoral", main = "Histogram of Time Taken")
+lines(density(data$time_taken), col = "red", lwd = 2)
+
+
 
 # Calculate summary statistics
 summary_stats <- data %>%
@@ -114,3 +125,35 @@ combined_plot <- ggarrange(bleu_plot, meteor_plot, time_plot,
                            ncol = 3, nrow = 1)
 
 ggsave("combined_comparison.png", combined_plot, width = 15, height = 5)
+
+
+
+# Function to calculate and print the median values for each metric by service
+print_medians <- function(df) {
+  # Median for BLEU score by service
+  bleu_medians <- df %>%
+    group_by(service) %>%
+    summarize(median_bleu = median(bleu_score, na.rm = TRUE))
+  
+  cat("Median BLEU scores by service:\n")
+  print(bleu_medians)
+  
+  # Median for METEOR score by service
+  meteor_medians <- df %>%
+    group_by(service) %>%
+    summarize(median_meteor = median(meteor_score, na.rm = TRUE))
+  
+  cat("\nMedian METEOR scores by service:\n")
+  print(meteor_medians)
+  
+  # Median for translation times by service
+  time_medians <- df %>%
+    group_by(service) %>%
+    summarize(median_time = median(time_taken, na.rm = TRUE))
+  
+  cat("\nMedian translation times by service (in seconds):\n")
+  print(time_medians)
+}
+
+# Call the function to print the medians
+print_medians(data)
