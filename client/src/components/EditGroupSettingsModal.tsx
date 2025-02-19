@@ -55,6 +55,12 @@ const EditGroupSettingsModal: React.FC<EditGroupSettingsModalProps> = ({
     setError(null);
     setLoading(true);
 
+    if (participants.length <= 2) {
+      setError("Sie müssen mindestens 3 Teilnehmer haben, um eine Gruppe zu erstellen.");
+      setLoading(false);
+      return;
+    }    
+
     try {
       const url = BASE_URL + "chat/editGroup/" + chat?._id;
       const res = await fetch(url, {

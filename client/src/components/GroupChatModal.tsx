@@ -3,6 +3,7 @@ import { MdCancel } from "react-icons/md";
 import { RootState } from "../store/store";
 import { useSelector } from "react-redux";
 import { BASE_URL } from "../utils/constants";
+import { SiPanasonic } from "react-icons/si";
 
 interface GroupChatModalProps {
   setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -15,7 +16,7 @@ const GroupChatModal: React.FC<GroupChatModalProps> = ({ setOpenModal, setSelect
   const [groupName, setGroupName] = useState<string>("");
   const [participants, setParticipants] = useState<string[]>([]);
   const [participantsPopulated, setParticipantsPopulated] = useState<any[]>([]);
-  const [commonLanguage, setCommonLanguage] = useState<string>("");
+  const [commonLanguage, setCommonLanguage] = useState<string>("en");
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [fetchedUsers, setFetchedUsers] = useState<any[]>([]);
 
@@ -24,8 +25,15 @@ const GroupChatModal: React.FC<GroupChatModalProps> = ({ setOpenModal, setSelect
 
   const createGroup = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("participants", participants);
-    console.log(groupName, commonLanguage)
+    setError(null);
+
+
+    if (participants.length < 2) {
+      setError("Sie müssen mindestens 3 Teilnehmer haben, um eine Gruppe zu erstellen.");
+      return;
+    }
+
+    console.log("creating Group....");;
     const url = BASE_URL + "chat/createGroup";
     try {
       const res = await fetch(url, {
@@ -239,6 +247,10 @@ const GroupChatModal: React.FC<GroupChatModalProps> = ({ setOpenModal, setSelect
               </div>
             </div>
           )}
+
+          {error && 
+            <span>{error}</span>
+          }
 
           <button
             type="submit"

@@ -16,14 +16,27 @@ const Signup = () => {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        setError(null);
+
         
         if (!firstName || !lastName || !email || !password) {
             setError("Alle Felder müssen ausgefüllt werden");
             return;
         }
 
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            console.log("Bitte geben Sie eine gültige E-Mail-Adresse ein");
+            setError("Bitte geben Sie eine gültige E-Mail-Adresse ein");
+            return;
+        }
+
+        if (password.length < 8) {
+            setError("Das Passwort muss mindestens 8 Zeichen lang sein");
+            return;
+        }
+
         try {
-            setError(null);
             setLoading(true);
             const url = BASE_URL + "auth/register";
             const res = await fetch(url, {
@@ -136,6 +149,12 @@ const Signup = () => {
                             required
                         />
                     </div>
+                    
+                    {error && (
+                        <div className="w-full text-red-500 text-center self-center text-sm transition-opacity duration-500 ease-in-out">
+                            {error} 
+                        </div>
+                    )}
 
                     <button
                         type="submit"
