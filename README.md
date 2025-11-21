@@ -8,10 +8,13 @@ Eine Chat-Anwendung, die Nachrichten automatisch übersetzt und dem Empfänger i
 - **Gruppenchats**: Jede Gruppe hat eine festgelegte Sprache. Nachrichten werden in dieser Sprache empfangen, unabhängig von der Sprache, in der sie gesendet wurden.
 
 ![Authentication](pics_for_readme/auth.png)
+*Authentifizierungs-Seite*
 
 ![App Overview](pics_for_readme/app.png)
+*App-Übersicht*
 
 ![Chat Interface](pics_for_readme/chat-interface.png)
+*Chat-Benutzeroberfläche*
 
 ## Installation & Setup
 
